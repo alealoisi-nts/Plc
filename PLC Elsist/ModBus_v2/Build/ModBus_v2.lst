@@ -1,0 +1,3752 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: ModBus_v2
+*	COMPILER VERSION: 5.22.0.24
+*
+***********************************************************************
+
+**************************************************
+	CODE GENERATOR SUBROUTINES
+**************************************************
+
+$$MOD:
+005BA0D0  FB90 F3F1		sdiv r3, r0, r1
+005BA0D4  4359     		mul r1, r1, r3
+005BA0D6  EBC1 0000		rsb r0, r1, r0
+005BA0DA  4770     		bx lr
+
+$$MOD_U:
+005BA0DC  FBB0 F3F1		udiv r3, r0, r1
+005BA0E0  4359     		mul r1, r1, r3
+005BA0E2  EBC1 0000		rsb r0, r1, r0
+005BA0E6  4770     		bx lr
+
+**************************************************
+	List function: eGetBYTE
+**************************************************
+
+FUNCTION eGetBYTE : BYTE
+
+	{ DE:"(Sfr108a260) eLLabCommonLib - Get BYTE value from void pointer" }
+
+        VAR_INPUT
+RAddress : DWORD;	{ DE:"Read address" }
+	END_VAR
+
+        VAR
+Ptr : @BYTE;	{ DE:"Auxiliary pointer" }
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Par RAddress: CALLER STACK FRAME AT sp+0
+	Var Ptr: REGISTER _TMP_32LO
+
+005BA0E8  466F     		mov r7, sp
+005BA0EA  B082     		sub sp, sp, #8
+005BA0EC  F8CD E000		str lr, [sp]
+005BA0F0  E92D 1E50		stmdb sp!, { r4, r6, r9, r10, r11, r12 }
+005BA0F4  463E     		mov r6, r7
+005BA0F6  2400     		mov r4, #0
+
+005BA0F8  6830     		ldr r0, [r6]
+005BA0FA  4681     		mov r9, r0
+
+005BA0FC  46CC     		mov r12, r9
+005BA0FE  F89C 0000		ldrb r0, [r12]
+005BA102  4604     		mov r4, r0
+
+005BA104  4620     		mov r0, r4
+005BA106  E8BD 1E50		ldmia sp!, { r4, r6, r9, r10, r11, r12 }
+005BA10A  F8DD E000		ldr lr, [sp]
+005BA10E  B002     		add sp, sp, #8
+
+005BA110  4770     		bx lr
+
+END_FUNCTION
+**************************************************
+	List function: eSetBYTE
+**************************************************
+
+FUNCTION eSetBYTE : BOOL
+
+	{ DE:"(Sfr108a260) eLLabCommonLib - Set BYTE value to void pointer" }
+
+        VAR_INPUT
+WAddress : DWORD;	{ DE:"Write address" }
+WValue : BYTE;	{ DE:"Write value" }
+	END_VAR
+
+        VAR
+Ptr : @BYTE;	{ DE:"Auxiliary pointer" }
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Par WAddress: CALLER STACK FRAME AT sp+0
+	Par WValue: CALLER STACK FRAME AT sp+4
+	Var Ptr: REGISTER _TMP_32LO
+
+005BA112  466F     		mov r7, sp
+005BA114  B082     		sub sp, sp, #8
+005BA116  F8CD E000		str lr, [sp]
+005BA11A  E92D 1E50		stmdb sp!, { r4, r6, r9, r10, r11, r12 }
+005BA11E  463E     		mov r6, r7
+005BA120  2400     		mov r4, #0
+
+005BA122  6830     		ldr r0, [r6]
+005BA124  4681     		mov r9, r0
+
+005BA126  F8DF 701C		ldr r7, [pc, #+28] ; 0x4
+005BA12A  5DF0     		ldrb r0, [r6, +r7]
+005BA12C  46CC     		mov r12, r9
+005BA12E  F88C 0000		strb r0, [r12]
+
+005BA132  2001     		mov r0, #1 ; 1
+005BA134  4604     		mov r4, r0
+
+005BA136  4620     		mov r0, r4
+005BA138  E8BD 1E50		ldmia sp!, { r4, r6, r9, r10, r11, r12 }
+005BA13C  F8DD E000		ldr lr, [sp]
+005BA140  B002     		add sp, sp, #8
+
+005BA142  4770     		bx lr
+
+005BA144  00000004		; 0x00000004
+
+END_FUNCTION
+**************************************************
+	List function block: BitToByte
+**************************************************
+
+FUNCTION_BLOCK BitToByte
+
+	{ DE:"(Sfr054e010) eLLabUtyLib - Merges 8 BOOL variables into a BYTE" }
+
+        VAR_INPUT
+b0 : BOOL;
+b1 : BOOL;
+b2 : BOOL;
+b3 : BOOL;
+b4 : BOOL;
+b5 : BOOL;
+b6 : BOOL;
+b7 : BOOL;
+	END_VAR
+
+        VAR_OUTPUT
+Out : BYTE;	{ DE:"Function result" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA148  E92D 4040		stmdb sp!, { r6, lr }
+005BA14C  462E     		mov r6, r5
+
+005BA14E  2000     		mov r0, #0 ; 0
+005BA150  F8DF 7100		ldr r7, [pc, #+256] ; 0x8
+005BA154  55F0     		strb r0, [r6, +r7]
+
+005BA156  7830     		ldrb r0, [r6]
+
+005BA158  2800     		cmp r0, #0
+005BA15A  D008     		beq #16 ; 0x005BA16E
+
+
+005BA15E  F8DF 70F4		ldr r7, [pc, #+244] ; 0x8
+005BA162  5DF0     		ldrb r0, [r6, +r7]
+
+005BA164  2701     		mov r7, #1 ; 1
+005BA166  4338     		orr r0, r0, r7
+
+005BA168  F8DF 70E8		ldr r7, [pc, #+232] ; 0x8
+005BA16C  55F0     		strb r0, [r6, +r7]
+
+005BA16E  F8DF 70C8		ldr r7, [pc, #+200] ; 0x1
+005BA172  5DF0     		ldrb r0, [r6, +r7]
+
+005BA174  2800     		cmp r0, #0
+005BA176  D008     		beq #16 ; 0x005BA18A
+
+
+005BA17A  F8DF 70D8		ldr r7, [pc, #+216] ; 0x8
+005BA17E  5DF0     		ldrb r0, [r6, +r7]
+
+005BA180  2702     		mov r7, #2 ; 2
+005BA182  4338     		orr r0, r0, r7
+
+005BA184  F8DF 70CC		ldr r7, [pc, #+204] ; 0x8
+005BA188  55F0     		strb r0, [r6, +r7]
+
+005BA18A  F8DF 70B0		ldr r7, [pc, #+176] ; 0x2
+005BA18E  5DF0     		ldrb r0, [r6, +r7]
+
+005BA190  2800     		cmp r0, #0
+005BA192  D008     		beq #16 ; 0x005BA1A6
+
+
+005BA196  F8DF 70BC		ldr r7, [pc, #+188] ; 0x8
+005BA19A  5DF0     		ldrb r0, [r6, +r7]
+
+005BA19C  2704     		mov r7, #4 ; 4
+005BA19E  4338     		orr r0, r0, r7
+
+005BA1A0  F8DF 70B0		ldr r7, [pc, #+176] ; 0x8
+005BA1A4  55F0     		strb r0, [r6, +r7]
+
+005BA1A6  F8DF 7098		ldr r7, [pc, #+152] ; 0x3
+005BA1AA  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1AC  2800     		cmp r0, #0
+005BA1AE  D008     		beq #16 ; 0x005BA1C2
+
+
+005BA1B2  F8DF 70A0		ldr r7, [pc, #+160] ; 0x8
+005BA1B6  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1B8  2708     		mov r7, #8 ; 8
+005BA1BA  4338     		orr r0, r0, r7
+
+005BA1BC  F8DF 7094		ldr r7, [pc, #+148] ; 0x8
+005BA1C0  55F0     		strb r0, [r6, +r7]
+
+005BA1C2  F8DF 7080		ldr r7, [pc, #+128] ; 0x4
+005BA1C6  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1C8  2800     		cmp r0, #0
+005BA1CA  D008     		beq #16 ; 0x005BA1DE
+
+
+005BA1CE  F8DF 7084		ldr r7, [pc, #+132] ; 0x8
+005BA1D2  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1D4  2710     		mov r7, #16 ; 16
+005BA1D6  4338     		orr r0, r0, r7
+
+005BA1D8  F8DF 7078		ldr r7, [pc, #+120] ; 0x8
+005BA1DC  55F0     		strb r0, [r6, +r7]
+
+005BA1DE  F8DF 7068		ldr r7, [pc, #+104] ; 0x5
+005BA1E2  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1E4  2800     		cmp r0, #0
+005BA1E6  D008     		beq #16 ; 0x005BA1FA
+
+
+005BA1EA  F8DF 7068		ldr r7, [pc, #+104] ; 0x8
+005BA1EE  5DF0     		ldrb r0, [r6, +r7]
+
+005BA1F0  2720     		mov r7, #32 ; 32
+005BA1F2  4338     		orr r0, r0, r7
+
+005BA1F4  F8DF 705C		ldr r7, [pc, #+92] ; 0x8
+005BA1F8  55F0     		strb r0, [r6, +r7]
+
+005BA1FA  F8DF 7050		ldr r7, [pc, #+80] ; 0x6
+005BA1FE  5DF0     		ldrb r0, [r6, +r7]
+
+005BA200  2800     		cmp r0, #0
+005BA202  D008     		beq #16 ; 0x005BA216
+
+
+005BA206  F8DF 704C		ldr r7, [pc, #+76] ; 0x8
+005BA20A  5DF0     		ldrb r0, [r6, +r7]
+
+005BA20C  2740     		mov r7, #64 ; 64
+005BA20E  4338     		orr r0, r0, r7
+
+005BA210  F8DF 7040		ldr r7, [pc, #+64] ; 0x8
+005BA214  55F0     		strb r0, [r6, +r7]
+
+005BA216  F8DF 7038		ldr r7, [pc, #+56] ; 0x7
+005BA21A  5DF0     		ldrb r0, [r6, +r7]
+
+005BA21C  2800     		cmp r0, #0
+005BA21E  D008     		beq #16 ; 0x005BA232
+
+
+005BA222  F8DF 7030		ldr r7, [pc, #+48] ; 0x8
+005BA226  5DF0     		ldrb r0, [r6, +r7]
+
+005BA228  2780     		mov r7, #128 ; 128
+005BA22A  4338     		orr r0, r0, r7
+
+005BA22C  F8DF 7024		ldr r7, [pc, #+36] ; 0x8
+005BA230  55F0     		strb r0, [r6, +r7]
+
+005BA232  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BA236  4770     		bx lr
+
+005BA238  00000001		; 0x00000001
+005BA23C  00000002		; 0x00000002
+005BA240  00000003		; 0x00000003
+005BA244  00000004		; 0x00000004
+005BA248  00000005		; 0x00000005
+005BA24C  00000006		; 0x00000006
+005BA250  00000007		; 0x00000007
+005BA254  00000008		; 0x00000008
+
+
+Frame allocation:
+
+	0000 bit  0: VAR b0
+	0001 bit  0: VAR b1
+	0002 bit  0: VAR b2
+	0003 bit  0: VAR b3
+	0004 bit  0: VAR b4
+	0005 bit  0: VAR b5
+	0006 bit  0: VAR b6
+	0007 bit  0: VAR b7
+	0008       : VAR Out
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: ByteToBit
+**************************************************
+
+FUNCTION_BLOCK ByteToBit
+
+	{ DE:"(Sfr054e010) eLLabUtyLib - Splits BYTE variable into 8 BOOL" }
+
+        VAR_INPUT
+In : BYTE;	{ DE:"Input data" }
+	END_VAR
+
+        VAR_OUTPUT
+b0 : BOOL;	{ DE:"Bit 0 result" }
+b1 : BOOL;	{ DE:"Bit 1 result" }
+b2 : BOOL;	{ DE:"Bit 2 result" }
+b3 : BOOL;	{ DE:"Bit 3 result" }
+b4 : BOOL;	{ DE:"Bit 4 result" }
+b5 : BOOL;	{ DE:"Bit 5 result" }
+b6 : BOOL;	{ DE:"Bit 6 result" }
+b7 : BOOL;	{ DE:"Bit 7 result" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA258  E92D 4040		stmdb sp!, { r6, lr }
+005BA25C  462E     		mov r6, r5
+
+005BA25E  7830     		ldrb r0, [r6]
+
+005BA260  2701     		mov r7, #1 ; 1
+005BA262  4038     		and r0, r0, r7
+
+005BA264  2800     		cmp r0, #0
+005BA266  BF18 2001		nemov r0, #1
+005BA26A  BF08 2000		eqmov r0, #0
+
+005BA26E  F8DF 70A4		ldr r7, [pc, #+164] ; 0x1
+005BA272  55F0     		strb r0, [r6, +r7]
+
+005BA274  7830     		ldrb r0, [r6]
+
+005BA276  2702     		mov r7, #2 ; 2
+005BA278  4038     		and r0, r0, r7
+
+005BA27A  2800     		cmp r0, #0
+005BA27C  BF18 2001		nemov r0, #1
+005BA280  BF08 2000		eqmov r0, #0
+
+005BA284  F8DF 7090		ldr r7, [pc, #+144] ; 0x2
+005BA288  55F0     		strb r0, [r6, +r7]
+
+005BA28A  7830     		ldrb r0, [r6]
+
+005BA28C  2704     		mov r7, #4 ; 4
+005BA28E  4038     		and r0, r0, r7
+
+005BA290  2800     		cmp r0, #0
+005BA292  BF18 2001		nemov r0, #1
+005BA296  BF08 2000		eqmov r0, #0
+
+005BA29A  F8DF 7080		ldr r7, [pc, #+128] ; 0x3
+005BA29E  55F0     		strb r0, [r6, +r7]
+
+005BA2A0  7830     		ldrb r0, [r6]
+
+005BA2A2  2708     		mov r7, #8 ; 8
+005BA2A4  4038     		and r0, r0, r7
+
+005BA2A6  2800     		cmp r0, #0
+005BA2A8  BF18 2001		nemov r0, #1
+005BA2AC  BF08 2000		eqmov r0, #0
+
+005BA2B0  F8DF 706C		ldr r7, [pc, #+108] ; 0x4
+005BA2B4  55F0     		strb r0, [r6, +r7]
+
+005BA2B6  7830     		ldrb r0, [r6]
+
+005BA2B8  2710     		mov r7, #16 ; 16
+005BA2BA  4038     		and r0, r0, r7
+
+005BA2BC  2800     		cmp r0, #0
+005BA2BE  BF18 2001		nemov r0, #1
+005BA2C2  BF08 2000		eqmov r0, #0
+
+005BA2C6  F8DF 705C		ldr r7, [pc, #+92] ; 0x5
+005BA2CA  55F0     		strb r0, [r6, +r7]
+
+005BA2CC  7830     		ldrb r0, [r6]
+
+005BA2CE  2720     		mov r7, #32 ; 32
+005BA2D0  4038     		and r0, r0, r7
+
+005BA2D2  2800     		cmp r0, #0
+005BA2D4  BF18 2001		nemov r0, #1
+005BA2D8  BF08 2000		eqmov r0, #0
+
+005BA2DC  F8DF 7048		ldr r7, [pc, #+72] ; 0x6
+005BA2E0  55F0     		strb r0, [r6, +r7]
+
+005BA2E2  7830     		ldrb r0, [r6]
+
+005BA2E4  2740     		mov r7, #64 ; 64
+005BA2E6  4038     		and r0, r0, r7
+
+005BA2E8  2800     		cmp r0, #0
+005BA2EA  BF18 2001		nemov r0, #1
+005BA2EE  BF08 2000		eqmov r0, #0
+
+005BA2F2  F8DF 7038		ldr r7, [pc, #+56] ; 0x7
+005BA2F6  55F0     		strb r0, [r6, +r7]
+
+005BA2F8  7830     		ldrb r0, [r6]
+
+005BA2FA  2780     		mov r7, #128 ; 128
+005BA2FC  4038     		and r0, r0, r7
+
+005BA2FE  2800     		cmp r0, #0
+005BA300  BF18 2001		nemov r0, #1
+005BA304  BF08 2000		eqmov r0, #0
+
+005BA308  F8DF 7024		ldr r7, [pc, #+36] ; 0x8
+005BA30C  55F0     		strb r0, [r6, +r7]
+
+005BA30E  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BA312  4770     		bx lr
+
+005BA314  00000001		; 0x00000001
+005BA318  00000002		; 0x00000002
+005BA31C  00000003		; 0x00000003
+005BA320  00000004		; 0x00000004
+005BA324  00000005		; 0x00000005
+005BA328  00000006		; 0x00000006
+005BA32C  00000007		; 0x00000007
+005BA330  00000008		; 0x00000008
+
+
+Frame allocation:
+
+	0000       : VAR In
+	0001 bit  0: VAR b0
+	0002 bit  0: VAR b1
+	0003 bit  0: VAR b2
+	0004 bit  0: VAR b3
+	0005 bit  0: VAR b4
+	0006 bit  0: VAR b5
+	0007 bit  0: VAR b6
+	0008 bit  0: VAR b7
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: ByteToWord
+**************************************************
+
+FUNCTION_BLOCK ByteToWord
+
+	{ DE:"(Sfr054e010) eLLabUtyLib - Merges 2 BYTE variables into a WORD" }
+
+        VAR_INPUT
+MSB : BYTE;	{ DE:"MSB Value" }
+LSB : BYTE;	{ DE:"LSB Value" }
+	END_VAR
+
+        VAR_OUTPUT
+Out : WORD;	{ DE:"Function result" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA334  E92D 4040		stmdb sp!, { r6, lr }
+005BA338  462E     		mov r6, r5
+
+005BA33A  7830     		ldrb r0, [r6]
+
+005BA33C  F44F 7780		mov r7, #256 ; 256
+005BA340  4378     		mul r0, r0, r7
+
+005BA342  F8DF 7014		ldr r7, [pc, #+20] ; 0x1
+005BA346  5DF7     		ldrb r7, [r6, +r7]
+005BA348  19C0     		add r0, r0, r7
+
+005BA34A  F8DF 7010		ldr r7, [pc, #+16] ; 0x2
+005BA34E  53F0     		strh r0, [r6, +r7]
+
+005BA350  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BA354  4770     		bx lr
+
+005BA358  00000001		; 0x00000001
+005BA35C  00000002		; 0x00000002
+
+
+Frame allocation:
+
+	0000       : VAR MSB
+	0001       : VAR LSB
+	0002       : VAR Out
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: R_TRIG
+**************************************************
+
+FUNCTION_BLOCK R_TRIG
+
+	{ DE:"(Sfr053c200) eLLabStdLib - Rising edge detector" }
+
+        VAR_INPUT
+CLK : BOOL;	{ DE:"Clock signal" }
+	END_VAR
+
+        VAR_OUTPUT
+Q : BOOL;	{ DE:"Output" }
+	END_VAR
+
+        VAR
+CLKMemo : BOOL := FALSE;	{ DE:"Clock memo" }
+QAux : BOOL;	{ DE:"Auxiliary output" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA360  E92D 4040		stmdb sp!, { r6, lr }
+005BA364  462E     		mov r6, r5
+
+005BA366  F8DF 708C		ldr r7, [pc, #+140] ; 0x3
+005BA36A  5DF0     		ldrb r0, [r6, +r7]
+
+005BA36C  F8DF 707C		ldr r7, [pc, #+124] ; 0x1
+005BA370  5DF7     		ldrb r7, [r6, +r7]
+005BA372  42B8     		cmp r0, r7
+005BA374  BF18 2000		nemov r0, #0
+005BA378  BF08 2001		eqmov r0, #1
+
+005BA37C  2800     		cmp r0, #0
+005BA37E  D004     		beq #8 ; 0x005BA38A
+
+
+005BA382  2000     		mov r0, #0 ; 0
+005BA384  F8DF 706C		ldr r7, [pc, #+108] ; 0x3
+005BA388  55F0     		strb r0, [r6, +r7]
+
+005BA38A  F8DF 7064		ldr r7, [pc, #+100] ; 0x2
+005BA38E  5DF0     		ldrb r0, [r6, +r7]
+
+005BA390  7837     		ldrb r7, [r6]
+005BA392  42B8     		cmp r0, r7
+005BA394  BF08 2000		eqmov r0, #0
+005BA398  BF18 2001		nemov r0, #1
+
+005BA39C  2800     		cmp r0, #0
+005BA39E  D00E     		beq #28 ; 0x005BA3BE
+
+
+005BA3A2  F8DF 704C		ldr r7, [pc, #+76] ; 0x2
+005BA3A6  5DF0     		ldrb r0, [r6, +r7]
+005BA3A8  7030     		strb r0, [r6]
+
+005BA3AA  F8DF 7044		ldr r7, [pc, #+68] ; 0x2
+005BA3AE  5DF0     		ldrb r0, [r6, +r7]
+
+005BA3B0  2800     		cmp r0, #0
+005BA3B2  D004     		beq #8 ; 0x005BA3BE
+
+
+005BA3B6  2001     		mov r0, #1 ; 1
+005BA3B8  F8DF 7038		ldr r7, [pc, #+56] ; 0x3
+005BA3BC  55F0     		strb r0, [r6, +r7]
+
+005BA3BE  F8DF 7034		ldr r7, [pc, #+52] ; 0x3
+005BA3C2  5DF0     		ldrb r0, [r6, +r7]
+
+005BA3C4  F8DF 7024		ldr r7, [pc, #+36] ; 0x1
+005BA3C8  5DF7     		ldrb r7, [r6, +r7]
+005BA3CA  42B8     		cmp r0, r7
+005BA3CC  BF08 2000		eqmov r0, #0
+005BA3D0  BF18 2001		nemov r0, #1
+
+005BA3D4  2800     		cmp r0, #0
+005BA3D6  D006     		beq #12 ; 0x005BA3E6
+
+
+005BA3DA  F8DF 7018		ldr r7, [pc, #+24] ; 0x3
+005BA3DE  5DF0     		ldrb r0, [r6, +r7]
+005BA3E0  F8DF 7008		ldr r7, [pc, #+8] ; 0x1
+005BA3E4  55F0     		strb r0, [r6, +r7]
+
+005BA3E6  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BA3EA  4770     		bx lr
+
+005BA3EC  00000001		; 0x00000001
+005BA3F0  00000002		; 0x00000002
+005BA3F4  00000003		; 0x00000003
+
+
+Frame allocation:
+
+	0000 bit  0: VAR CLKMemo
+	0001 bit  0: VAR QAux
+	0002 bit  0: VAR CLK
+	0003 bit  0: VAR Q
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: eTON
+**************************************************
+
+FUNCTION_BLOCK eTON
+
+	{ DE:"(Sfr053c200) eLLabStdLib - On delay timer" }
+
+        VAR_INPUT
+IN : BOOL;	{ DE:"Timer input" }
+PT : UDINT;	{ DE:"Preset time value (mS)" }
+	END_VAR
+
+        VAR_OUTPUT
+Q : BOOL;	{ DE:"Delayed output" }
+ET : UDINT;	{ DE:"Executing time (mS)" }
+	END_VAR
+
+        VAR_EXTERNAL
+	{G:"SystemVariables"}
+SysTime AT %MB0.320 : UDINT;	{ DE:"System time [mS]" }
+	END_VAR
+
+        VAR
+TimeBf : UDINT;	{ DE:"Time buffer" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA3F8  E92D 4040		stmdb sp!, { r6, lr }
+005BA3FC  462E     		mov r6, r5
+
+005BA3FE  F8DF 70AC		ldr r7, [pc, #+172] ; 0x4
+005BA402  5DF0     		ldrb r0, [r6, +r7]
+
+005BA404  2800     		cmp r0, #0
+005BA406  BF08 2001		eqmov r0, #1
+005BA40A  BF18 2000		nemov r0, #0
+
+005BA40E  2800     		cmp r0, #0
+005BA410  D00E     		beq #28 ; 0x005BA430
+
+
+005BA414  F8DF 70A4		ldr r7, [pc, #+164] ; 0x20419BBC
+005BA418  6838     		ldr r0, [r7]
+005BA41A  6030     		str r0, [r6]
+
+005BA41C  2000     		mov r0, #0 ; 0
+005BA41E  F8DF 7094		ldr r7, [pc, #+148] ; 0xC
+005BA422  55F0     		strb r0, [r6, +r7]
+
+005BA424  2000     		mov r0, #0 ; 0
+005BA426  F8DF 7090		ldr r7, [pc, #+144] ; 0x10
+005BA42A  51F0     		str r0, [r6, +r7]
+
+005BA42C  E03A     		b #116 ; 0x005BA4A4
+
+
+005BA430  F8DF 7080		ldr r7, [pc, #+128] ; 0xC
+005BA434  5DF0     		ldrb r0, [r6, +r7]
+
+005BA436  2800     		cmp r0, #0
+005BA438  D014     		beq #40 ; 0x005BA464
+
+
+005BA43C  F8DF 7070		ldr r7, [pc, #+112] ; 0x8
+005BA440  59F0     		ldr r0, [r6, +r7]
+
+005BA442  F8DF 7074		ldr r7, [pc, #+116] ; 0x10
+005BA446  59F7     		ldr r7, [r6, +r7]
+005BA448  42B8     		cmp r0, r7
+005BA44A  BF98 2000		lsmov r0, #0
+005BA44E  BF88 2001		himov r0, #1
+
+005BA452  2800     		cmp r0, #0
+005BA454  D004     		beq #8 ; 0x005BA460
+
+
+005BA458  2000     		mov r0, #0 ; 0
+005BA45A  F8DF 7058		ldr r7, [pc, #+88] ; 0xC
+005BA45E  55F0     		strb r0, [r6, +r7]
+
+005BA460  E020     		b #64 ; 0x005BA4A4
+
+
+005BA464  F8DF 7054		ldr r7, [pc, #+84] ; 0x20419BBC
+005BA468  6838     		ldr r0, [r7]
+
+005BA46A  6837     		ldr r7, [r6]
+005BA46C  1BC0     		sub r0, r0, r7
+
+005BA46E  F8DF 7048		ldr r7, [pc, #+72] ; 0x10
+005BA472  51F0     		str r0, [r6, +r7]
+
+005BA474  F8DF 7040		ldr r7, [pc, #+64] ; 0x10
+005BA478  59F0     		ldr r0, [r6, +r7]
+
+005BA47A  F8DF 7034		ldr r7, [pc, #+52] ; 0x8
+005BA47E  59F7     		ldr r7, [r6, +r7]
+005BA480  42B8     		cmp r0, r7
+005BA482  BF38 2000		lomov r0, #0
+005BA486  BF28 2001		hsmov r0, #1
+
+005BA48A  2800     		cmp r0, #0
+005BA48C  D00A     		beq #20 ; 0x005BA4A4
+
+
+005BA490  2001     		mov r0, #1 ; 1
+005BA492  F8DF 7020		ldr r7, [pc, #+32] ; 0xC
+005BA496  55F0     		strb r0, [r6, +r7]
+
+005BA498  F8DF 7014		ldr r7, [pc, #+20] ; 0x8
+005BA49C  59F0     		ldr r0, [r6, +r7]
+005BA49E  F8DF 7018		ldr r7, [pc, #+24] ; 0x10
+005BA4A2  51F0     		str r0, [r6, +r7]
+
+005BA4A4  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BA4A8  4770     		bx lr
+
+005BA4AC  00000004		; 0x00000004
+005BA4B0  00000008		; 0x00000008
+005BA4B4  0000000C		; 0x0000000C
+005BA4B8  00000010		; 0x00000010
+005BA4BC  20419BBC		; 0x20419BBC
+
+
+Frame allocation:
+
+	0000       : VAR TimeBf
+	0004 bit  0: VAR IN
+	0008       : VAR PT
+	000C bit  0: VAR Q
+	0010       : VAR ET
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function: XUnifiedLibInit
+**************************************************
+
+FUNCTION XUnifiedLibInit : BOOL
+
+	{ DE:"(Sfr094a080) eLLabXUnified12Lib - XUnified library init" }
+
+        VAR_INPUT
+Cmd : BOOL;	{ DE:"Command" }
+	END_VAR
+
+        VAR
+i : UDINT;	{ DE:"Auxiliary variable" }
+Version : STRING[ 10 ] := 'Sfr094a080';	{ DE:"Library version" }
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Par Cmd: CALLER STACK FRAME AT sp+0
+	Var i: REGISTER _TMP_32LO
+	Var Version: LOCAL STACK FRAME AT sp-12
+
+005BA4C0  466F     		mov r7, sp
+005BA4C2  B084     		sub sp, sp, #16
+005BA4C4  B082     		sub sp, sp, #8
+005BA4C6  F8CD E000		str lr, [sp]
+005BA4CA  E92D 1E50		stmdb sp!, { r4, r6, r9, r10, r11, r12 }
+005BA4CE  463E     		mov r6, r7
+005BA4D0  2400     		mov r4, #0
+
+005BA4D2  F8DF 7160		ldr r7, [pc, #+352] ; 0x30726653
+005BA4D6  F8DF 8134		ldr r8, [pc, #+308] ; 0xFFFFFFF4
+005BA4DA  EB06 0808		add r8, r6, r8
+005BA4DE  F8C8 7000		str r7, [r8]
+005BA4E2  F8DF 714C		ldr r7, [pc, #+332] ; 0x30613439
+005BA4E6  F8DF 8128		ldr r8, [pc, #+296] ; 0xFFFFFFF8
+005BA4EA  EB06 0808		add r8, r6, r8
+005BA4EE  F8C8 7000		str r7, [r8]
+005BA4F2  F8DF 7128		ldr r7, [pc, #+296] ; 0x3038
+005BA4F6  F8DF 811C		ldr r8, [pc, #+284] ; 0xFFFFFFFC
+005BA4FA  EB06 0808		add r8, r6, r8
+005BA4FE  F8A8 7000		strh r7, [r8]
+005BA502  2700     		mov r7, #0
+005BA504  F8DF 8110		ldr r8, [pc, #+272] ; 0xFFFFFFFE
+005BA508  EB06 0808		add r8, r6, r8
+005BA50C  F888 7000		strb r7, [r8]
+
+005BA510  2000     		mov r0, #0 ; 0
+
+005BA512  4681     		mov r9, r0
+
+005BA514  4648     		mov r0, r9
+
+005BA516  B082     		sub sp, sp, #8
+005BA518  F8CD 0000		str r0, [sp]
+005BA51C  200B     		mov r0, #11 ; 11
+
+005BA51E  1E80     		sub r0, r0, #2
+
+005BA520  4607     		mov r7, r0
+005BA522  F8DD 0000		ldr r0, [sp]
+005BA526  B002     		add sp, sp, #8
+005BA528  42B8     		cmp r0, r7
+005BA52A  BF98 2000		lsmov r0, #0
+005BA52E  BF88 2001		himov r0, #1
+
+005BA532  2800     		cmp r0, #0
+005BA534  D144     		bne #136 ; 0x005BA5C0
+
+
+005BA538  F8DF 70D0		ldr r7, [pc, #+208] ; 0xFFFFFFF4
+005BA53C  19F0     		add r0, r6, r7
+
+005BA53E  4448     		add r0, r0, r9
+
+005BA540  B082     		sub sp, sp, #8
+005BA542  F8CD 4000		str r4, [sp]
+005BA546  B082     		sub sp, sp, #8
+005BA548  4607     		mov r7, r0
+005BA54A  F8CD 7000		str r7, [sp]
+005BA54E  F8DF 40D8		ldr r4, [pc, #+216] ; 0x5BA0E8
+005BA552  F044 0401		orr r4, r4, #1
+005BA556  47A0     		blx r4
+005BA558  B002     		add sp, sp, #8
+005BA55A  F8DD 4000		ldr r4, [sp]
+005BA55E  B002     		add sp, sp, #8
+
+005BA560  B082     		sub sp, sp, #8
+005BA562  F8CD 4000		str r4, [sp]
+005BA566  B082     		sub sp, sp, #8
+005BA568  F8CD 4000		str r4, [sp]
+005BA56C  4607     		mov r7, r0
+005BA56E  4638     		mov r0, r7
+005BA570  F8DF 40AC		ldr r4, [pc, #+172] ; 0x4A2561
+005BA574  F044 0401		orr r4, r4, #1
+005BA578  47A0     		blx r4
+005BA57A  F8DD 4000		ldr r4, [sp]
+005BA57E  B002     		add sp, sp, #8
+005BA580  F8DD 4000		ldr r4, [sp]
+005BA584  B002     		add sp, sp, #8
+
+005BA586  4682     		mov r10, r0
+
+005BA588  F8DF 7080		ldr r7, [pc, #+128] ; 0xFFFFFFF4
+005BA58C  19F0     		add r0, r6, r7
+
+005BA58E  4448     		add r0, r0, r9
+
+005BA590  B082     		sub sp, sp, #8
+005BA592  F8CD 4000		str r4, [sp]
+005BA596  B082     		sub sp, sp, #8
+005BA598  4607     		mov r7, r0
+005BA59A  F8CD 7000		str r7, [sp]
+005BA59E  4657     		mov r7, r10
+005BA5A0  F8CD 7004		str r7, [sp, #+4]
+005BA5A4  F8DF 4084		ldr r4, [pc, #+132] ; 0x5BA112
+005BA5A8  F044 0401		orr r4, r4, #1
+005BA5AC  47A0     		blx r4
+005BA5AE  B002     		add sp, sp, #8
+005BA5B0  F8DD 4000		ldr r4, [sp]
+005BA5B4  B002     		add sp, sp, #8
+
+005BA5B6  4604     		mov r4, r0
+
+005BA5B8  4648     		mov r0, r9
+
+005BA5BA  1C40     		add r0, r0, #1
+
+005BA5BC  4681     		mov r9, r0
+
+005BA5BE  E7A9     		b #-174 ; 0x005BA514
+
+005BA5C0  F8DF 7048		ldr r7, [pc, #+72] ; 0xFFFFFFF4
+005BA5C4  19F0     		add r0, r6, r7
+
+005BA5C6  4683     		mov r11, r0
+
+005BA5C8  B082     		sub sp, sp, #8
+005BA5CA  F8CD 4000		str r4, [sp]
+005BA5CE  B082     		sub sp, sp, #8
+005BA5D0  F8CD 4000		str r4, [sp]
+005BA5D4  2001     		mov r0, #1 ; 1
+005BA5D6  2701     		mov r7, #1 ; 1
+005BA5D8  4639     		mov r1, r7
+005BA5DA  465F     		mov r7, r11
+005BA5DC  463A     		mov r2, r7
+005BA5DE  F8DF 4044		ldr r4, [pc, #+68] ; 0x4A25A1
+005BA5E2  F044 0401		orr r4, r4, #1
+005BA5E6  47A0     		blx r4
+005BA5E8  F8DD 4000		ldr r4, [sp]
+005BA5EC  B002     		add sp, sp, #8
+005BA5EE  F8DD 4000		ldr r4, [sp]
+005BA5F2  B002     		add sp, sp, #8
+
+005BA5F4  4681     		mov r9, r0
+
+005BA5F6  2001     		mov r0, #1 ; 1
+005BA5F8  4604     		mov r4, r0
+
+005BA5FA  4620     		mov r0, r4
+005BA5FC  E8BD 1E50		ldmia sp!, { r4, r6, r9, r10, r11, r12 }
+005BA600  F8DD E000		ldr lr, [sp]
+005BA604  B002     		add sp, sp, #8
+005BA606  B004     		add sp, sp, #16
+
+005BA608  4770     		bx lr
+
+005BA60C  FFFFFFF4		; 0xFFFFFFF4
+005BA610  FFFFFFF8		; 0xFFFFFFF8
+005BA614  FFFFFFFC		; 0xFFFFFFFC
+005BA618  FFFFFFFE		; 0xFFFFFFFE
+005BA61C  00003038		; 0x00003038
+005BA620  004A2561		; 0x004A2561
+005BA624  004A25A1		; 0x004A25A1
+005BA628  005BA0E8		; 0x005BA0E8
+005BA62C  005BA112		; 0x005BA112
+005BA630  30613439		; 0x30613439
+005BA634  30726653		; 0x30726653
+
+END_FUNCTION
+**************************************************
+	List function block: FB_MacManager
+**************************************************
+
+FUNCTION_BLOCK FB_MacManager
+
+        VAR_INPUT
+IN_MACHINE_DT_Word : WORD := 0;	{ DE:"Machine word. 2 counters (A, B). Digital Twin" }
+IN_FILTER_RUN_STATE_ON_mSec : WORD := 10;	{ DE:"Timing filter for counter A ON" }
+IN_FILTER_RUN_STATE_OFF_mSec : WORD := 10;	{ DE:"Timing filter for counter A OFF" }
+IN_FILTER_CNT_A_ON_mSec : WORD := 10;	{ DE:"Timing filter for counter A ON" }
+IN_FILTER_CNT_A_OFF_mSec : WORD := 10;	{ DE:"Timing filter for counter A OFF" }
+IN_FILTER_CNT_B_ON_mSec : WORD := 10;	{ DE:"Timing filter for counter B ON" }
+IN_FILTER_CNT_B_OFF_mSec : WORD := 10;	{ DE:"Timing filter for counter B OFF" }
+IN_WARNING_DELAY_Sec : WORD := 180;	{ DE:"Delaying for stop machine before warning" }
+IN_PRESET_CNT_A_dUInt : REAL := 0.0;	{ DE:"Preset Counter A" }
+IN_PRESET_CNT_B_dUInt : REAL := 0.0;	{ DE:"Preset Counter B" }
+IN_CNT_A_STEP_UP : REAL := 1.0;
+IN_CNT_B_STEP_UP : REAL := 1.0;
+	END_VAR
+
+        VAR_OUTPUT
+OUT_STROBE_bool : BOOL := False;	{ DE:"Strobe bool signal for changes" }
+OUT_RUN_STATE_bool : BOOL := False;	{ DE:"Machine run state" }
+OUT_COUNTER_A_dUInt : REAL := 0.0;	{ DE:"Counter A value" }
+OUT_COUNTER_B_dUInt : REAL := 0.0;	{ DE:"Counter B value" }
+OUT_WARNING_bool : BOOL := False;	{ DE:"Warning reported out" }
+	END_VAR
+
+        VAR
+mac_byte_to_bit : ByteToBit;	{ DE:"internal use" }
+mac_bytes : ARRAY[0..1] OF BYTE := [0,0];	{ DE:"internal use" }
+mac_lsb_bits : ARRAY[0..7] OF BOOL := [0,0,0,0,0,0,0,0];	{ DE:"internal use" }
+mac_msb_bits : ARRAY[0..7] OF BOOL := [0,0,0,0,0,0,0,0];	{ DE:"internal use" }
+I_Enable : BOOL;
+I_Fermo : BOOL;
+I_ResetCnt : BOOL;
+I_PreSetCnt : BOOL;
+I_Stato : BOOL;
+bStatoRun : BOOL;
+bAppStatoRun : BOOL;
+bStatoRunOn : BOOL;
+bStatoRunOff : BOOL;
+StatoRunTON : eTON;
+StatoRunTOFF : eTON;
+I_ProdA : BOOL;
+bCntRTA : BOOL;
+bAppCntRTA : BOOL;
+bCntRTAOn : BOOL;
+bCntRTAOff : BOOL;
+CntRTATON : eTON;
+CntRTATOFF : eTON;
+I_ProdB : BOOL;
+bCntRTB : BOOL;
+bAppCntRTB : BOOL;
+bCntRTBOn : BOOL;
+bCntRTBOff : BOOL;
+CntRTBTON : eTON;
+CntRTBTOFF : eTON;
+OLD_OUT_RUN_STATE_bool : BOOL := FALSE;
+tWarning : eTON;
+bChanges : BOOL;
+PTrigger : R_TRIG;	{ DE:"Pulse trigger" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+005BA638  E92D 4040		stmdb sp!, { r6, lr }
+005BA63C  462E     		mov r6, r5
+
+#0		{SRC:FB_MacManager}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* mac_bytes[0] := TO_BYTE(IN_MACHINE_DT_Word); *)
+#4			LDP0		IN_MACHINE_DT_Word	{LNXT:11|12|-1}
+(-) UNDEF
+#5			TO_BYTE	{LNXT:11|12|-1}
+(*) UNDEF
+005BA63E  F8DF 7784		ldr r7, [pc, #+1924] ; 0xD0
+005BA642  5BF0     		ldrh r0, [r6, +r7]
+
+#6			ST		mac_bytes[0]	{LNXT:11|12|-1}
+(*) BYTE
+005BA644  F8DF 7698		ldr r7, [pc, #+1688] ; 0xC
+005BA648  55F0     		strb r0, [r6, +r7]
+
+#7		
+#8			(* mac_bytes[1] := TO_BYTE(IN_MACHINE_DT_Word / 256); *)
+#9			LD		IN_MACHINE_DT_Word	{LNXT:12|14|-1}
+(*) UNDEF
+005BA64A  F8DF 7778		ldr r7, [pc, #+1912] ; 0xD0
+005BA64E  5BF0     		ldrh r0, [r6, +r7]
+
+#10			DIV		256	{LNXT:12|14|-1}
+(*) WORD
+005BA650  F44F 7780		mov r7, #256 ; 256
+005BA654  B082     		sub sp, sp, #8
+005BA656  F8CD 1000		str r1, [sp]
+005BA65A  4639     		mov r1, r7
+005BA65C  FBB0 F0F1		udiv r0, r0, r1
+005BA660  F8DD 1000		ldr r1, [sp]
+005BA664  B002     		add sp, sp, #8
+
+#11			TO_BYTE	{LNXT:12|14|-1}
+(-) WORD
+#12			ST		mac_bytes[1]	{LNXT:12|14|-1}
+(*) BYTE
+005BA666  F8DF 767C		ldr r7, [pc, #+1660] ; 0xD
+005BA66A  55F0     		strb r0, [r6, +r7]
+
+#13		
+#14			(* mac_byte_to_bit *)
+#15			MOVE		mac_bytes[0],mac_byte_to_bit.In	{LNXT:14|-1|-1}
+(*) BYTE
+005BA66C  F8DF 7670		ldr r7, [pc, #+1648] ; 0xC
+005BA670  5DF0     		ldrb r0, [r6, +r7]
+005BA672  7030     		strb r0, [r6]
+
+#16			CAL		mac_byte_to_bit	{LNXT:14|15|-1}
+(*) BYTE
+005BA674  E92D 0021		stmdb sp!, { r0, r5 }
+005BA678  4635     		mov r5, r6
+005BA67A  F8DF 4794		ldr r4, [pc, #+1940] ; 0x5BA258
+005BA67E  F044 0401		orr r4, r4, #1
+005BA682  47A0     		blx r4
+005BA684  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#17		
+#18			(* I_Enable		:=mac_byte_to_bit.b0; *)
+#19			MOVE		mac_byte_to_bit.b0,I_Enable	{LNXT:15|16|-1}
+(*) BYTE
+005BA688  F8DF 7634		ldr r7, [pc, #+1588] ; 0x1
+005BA68C  5DF0     		ldrb r0, [r6, +r7]
+005BA68E  F8DF 767C		ldr r7, [pc, #+1660] ; 0x1E
+005BA692  55F0     		strb r0, [r6, +r7]
+
+#20		
+#21			(* I_Fermo			:=mac_byte_to_bit.b1; *)
+#22			MOVE		mac_byte_to_bit.b1,I_Fermo	{LNXT:16|17|-1}
+(*) BOOL
+005BA694  F8DF 762C		ldr r7, [pc, #+1580] ; 0x2
+005BA698  5DF0     		ldrb r0, [r6, +r7]
+005BA69A  F8DF 7674		ldr r7, [pc, #+1652] ; 0x1F
+005BA69E  55F0     		strb r0, [r6, +r7]
+
+#23		
+#24			(* I_ResetCnt		:=mac_byte_to_bit.b2; *)
+#25			MOVE		mac_byte_to_bit.b2,I_ResetCnt	{LNXT:17|18|-1}
+(*) BOOL
+005BA6A0  F8DF 7624		ldr r7, [pc, #+1572] ; 0x3
+005BA6A4  5DF0     		ldrb r0, [r6, +r7]
+005BA6A6  F8DF 766C		ldr r7, [pc, #+1644] ; 0x20
+005BA6AA  55F0     		strb r0, [r6, +r7]
+
+#26		
+#27			(* I_PreSetCnt		:=mac_byte_to_bit.b3; *)
+#28			MOVE		mac_byte_to_bit.b3,I_PreSetCnt	{LNXT:18|19|-1}
+(*) BOOL
+005BA6AC  F8DF 761C		ldr r7, [pc, #+1564] ; 0x4
+005BA6B0  5DF0     		ldrb r0, [r6, +r7]
+005BA6B2  F8DF 7664		ldr r7, [pc, #+1636] ; 0x21
+005BA6B6  55F0     		strb r0, [r6, +r7]
+
+#29		
+#30			(* mac_lsb_bits[4] :=mac_byte_to_bit.b4; *)
+#31			MOVE		mac_byte_to_bit.b4,mac_lsb_bits[4]	{LNXT:19|20|-1}
+(*) BOOL
+005BA6B8  F8DF 7614		ldr r7, [pc, #+1556] ; 0x5
+005BA6BC  5DF0     		ldrb r0, [r6, +r7]
+005BA6BE  F8DF 7628		ldr r7, [pc, #+1576] ; 0x12
+005BA6C2  55F0     		strb r0, [r6, +r7]
+
+#32		
+#33			(* mac_lsb_bits[5] :=mac_byte_to_bit.b5; *)
+#34			MOVE		mac_byte_to_bit.b5,mac_lsb_bits[5]	{LNXT:20|21|-1}
+(*) BOOL
+005BA6C4  F8DF 760C		ldr r7, [pc, #+1548] ; 0x6
+005BA6C8  5DF0     		ldrb r0, [r6, +r7]
+005BA6CA  F8DF 7620		ldr r7, [pc, #+1568] ; 0x13
+005BA6CE  55F0     		strb r0, [r6, +r7]
+
+#35		
+#36			(* mac_lsb_bits[6] :=mac_byte_to_bit.b6; *)
+#37			MOVE		mac_byte_to_bit.b6,mac_lsb_bits[6]	{LNXT:21|22|-1}
+(*) BOOL
+005BA6D0  F8DF 7604		ldr r7, [pc, #+1540] ; 0x7
+005BA6D4  5DF0     		ldrb r0, [r6, +r7]
+005BA6D6  F8DF 7618		ldr r7, [pc, #+1560] ; 0x14
+005BA6DA  55F0     		strb r0, [r6, +r7]
+
+#38		
+#39			(* mac_lsb_bits[7] :=mac_byte_to_bit.b7; *)
+#40			MOVE		mac_byte_to_bit.b7,mac_lsb_bits[7]	{LNXT:22|24|-1}
+(*) BOOL
+005BA6DC  F8DF 75FC		ldr r7, [pc, #+1532] ; 0x8
+005BA6E0  5DF0     		ldrb r0, [r6, +r7]
+005BA6E2  F8DF 7610		ldr r7, [pc, #+1552] ; 0x15
+005BA6E6  55F0     		strb r0, [r6, +r7]
+
+#41		
+#42			(* mac_byte_to_bit *)
+#43			MOVE		mac_bytes[1],mac_byte_to_bit.In	{LNXT:24|-1|-1}
+(*) BOOL
+005BA6E8  F8DF 75F8		ldr r7, [pc, #+1528] ; 0xD
+005BA6EC  5DF0     		ldrb r0, [r6, +r7]
+005BA6EE  7030     		strb r0, [r6]
+
+#44			CAL		mac_byte_to_bit	{LNXT:24|25|-1}
+(*) BYTE
+005BA6F0  E92D 0021		stmdb sp!, { r0, r5 }
+005BA6F4  4635     		mov r5, r6
+005BA6F6  F8DF 4718		ldr r4, [pc, #+1816] ; 0x5BA258
+005BA6FA  F044 0401		orr r4, r4, #1
+005BA6FE  47A0     		blx r4
+005BA700  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#45		
+#46			(* I_Stato		    :=mac_byte_to_bit.b0; *)
+#47			MOVE		mac_byte_to_bit.b0,I_Stato	{LNXT:25|26|-1}
+(*) BYTE
+005BA704  F8DF 75B8		ldr r7, [pc, #+1464] ; 0x1
+005BA708  5DF0     		ldrb r0, [r6, +r7]
+005BA70A  F8DF 7610		ldr r7, [pc, #+1552] ; 0x22
+005BA70E  55F0     		strb r0, [r6, +r7]
+
+#48		
+#49			(* I_ProdA			:=mac_byte_to_bit.b1; *)
+#50			MOVE		mac_byte_to_bit.b1,I_ProdA	{LNXT:26|27|-1}
+(*) BOOL
+005BA710  F8DF 75B0		ldr r7, [pc, #+1456] ; 0x2
+005BA714  5DF0     		ldrb r0, [r6, +r7]
+005BA716  F8DF 7630		ldr r7, [pc, #+1584] ; 0x50
+005BA71A  55F0     		strb r0, [r6, +r7]
+
+#51		
+#52			(* I_ProdB		    :=mac_byte_to_bit.b2; *)
+#53			MOVE		mac_byte_to_bit.b2,I_ProdB	{LNXT:27|28|-1}
+(*) BOOL
+005BA71C  F8DF 75A8		ldr r7, [pc, #+1448] ; 0x3
+005BA720  5DF0     		ldrb r0, [r6, +r7]
+005BA722  F8DF 7650		ldr r7, [pc, #+1616] ; 0x80
+005BA726  55F0     		strb r0, [r6, +r7]
+
+#54		
+#55			(* mac_msb_bits[3] :=mac_byte_to_bit.b3; *)
+#56			MOVE		mac_byte_to_bit.b3,mac_msb_bits[3]	{LNXT:28|29|-1}
+(*) BOOL
+005BA728  F8DF 75A0		ldr r7, [pc, #+1440] ; 0x4
+005BA72C  5DF0     		ldrb r0, [r6, +r7]
+005BA72E  F8DF 75C8		ldr r7, [pc, #+1480] ; 0x19
+005BA732  55F0     		strb r0, [r6, +r7]
+
+#57		
+#58			(* mac_msb_bits[4] :=mac_byte_to_bit.b4; *)
+#59			MOVE		mac_byte_to_bit.b4,mac_msb_bits[4]	{LNXT:29|30|-1}
+(*) BOOL
+005BA734  F8DF 7598		ldr r7, [pc, #+1432] ; 0x5
+005BA738  5DF0     		ldrb r0, [r6, +r7]
+005BA73A  F8DF 75C0		ldr r7, [pc, #+1472] ; 0x1A
+005BA73E  55F0     		strb r0, [r6, +r7]
+
+#60		
+#61			(* mac_msb_bits[5] :=mac_byte_to_bit.b5; *)
+#62			MOVE		mac_byte_to_bit.b5,mac_msb_bits[5]	{LNXT:30|31|-1}
+(*) BOOL
+005BA740  F8DF 7590		ldr r7, [pc, #+1424] ; 0x6
+005BA744  5DF0     		ldrb r0, [r6, +r7]
+005BA746  F8DF 75B8		ldr r7, [pc, #+1464] ; 0x1B
+005BA74A  55F0     		strb r0, [r6, +r7]
+
+#63		
+#64			(* mac_msb_bits[6] :=mac_byte_to_bit.b6; *)
+#65			MOVE		mac_byte_to_bit.b6,mac_msb_bits[6]	{LNXT:31|32|-1}
+(*) BOOL
+005BA74C  F8DF 7588		ldr r7, [pc, #+1416] ; 0x7
+005BA750  5DF0     		ldrb r0, [r6, +r7]
+005BA752  F8DF 75B0		ldr r7, [pc, #+1456] ; 0x1C
+005BA756  55F0     		strb r0, [r6, +r7]
+
+#66		
+#67			(* mac_msb_bits[7] :=mac_byte_to_bit.b7; *)
+#68			MOVE		mac_byte_to_bit.b7,mac_msb_bits[7]	{LNXT:32|37|-1}
+(*) BOOL
+005BA758  F8DF 7580		ldr r7, [pc, #+1408] ; 0x8
+005BA75C  5DF0     		ldrb r0, [r6, +r7]
+005BA75E  F8DF 75A8		ldr r7, [pc, #+1448] ; 0x1D
+005BA762  55F0     		strb r0, [r6, +r7]
+
+#69		
+#70		
+#71			(* IF I_PreSetCnt AND I_Enable *)
+#72			LD		I_PreSetCnt	{LNXT:37|-1|-1}
+(*) UNDEF
+005BA764  F8DF 75B0		ldr r7, [pc, #+1456] ; 0x21
+005BA768  5DF0     		ldrb r0, [r6, +r7]
+
+#73			AND		I_Enable	{LNXT:37|-1|-1}
+(*) BOOL
+005BA76A  F8DF 75A0		ldr r7, [pc, #+1440] ; 0x1E
+005BA76E  5DF7     		ldrb r7, [r6, +r7]
+005BA770  4038     		and r0, r0, r7
+
+#74			JMPCN	$label0	{LNXT:37|39|50}
+(-) BOOL
+005BA772  2800     		cmp r0, #0
+005BA774  D00C     		beq #24 ; 0x005BA790
+
+
+#75		
+#76			(* THEN *)
+#77		
+#78				(* OUT_COUNTER_A_dUInt := IN_PRESET_CNT_A_dUInt; *)
+#79				MOVE		IN_PRESET_CNT_A_dUInt,OUT_COUNTER_A_dUInt	{LNXT:39|40|-1}
+(*) BOOL
+005BA778  F8DF 7668		ldr r7, [pc, #+1640] ; 0xE0
+005BA77C  59F0     		ldr r0, [r6, +r7]
+005BA77E  F8DF 767C		ldr r7, [pc, #+1660] ; 0xF4
+005BA782  51F0     		str r0, [r6, +r7]
+
+#80		
+#81				(* OUT_COUNTER_B_dUInt := IN_PRESET_CNT_B_dUInt; *)
+#82				MOVE		IN_PRESET_CNT_B_dUInt,OUT_COUNTER_B_dUInt	{LNXT:40|50|-1}
+(*) REAL
+005BA784  F8DF 7660		ldr r7, [pc, #+1632] ; 0xE4
+005BA788  59F0     		ldr r0, [r6, +r7]
+005BA78A  F8DF 7674		ldr r7, [pc, #+1652] ; 0xF8
+005BA78E  51F0     		str r0, [r6, +r7]
+
+#83		
+#84		$label0:
+#85			(* END_IF *)
+#86		
+#87			(* StatoRunTON *)
+#88			MOVE		IN_FILTER_RUN_STATE_ON_mSec,StatoRunTON.PT	{LNXT:50|-1|-1}
+(*) REAL
+005BA790  F8DF 7634		ldr r7, [pc, #+1588] ; 0xD2
+005BA794  5BF0     		ldrh r0, [r6, +r7]
+005BA796  F8DF 7598		ldr r7, [pc, #+1432] ; 0x30
+005BA79A  51F0     		str r0, [r6, +r7]
+
+#89			CAL		StatoRunTON	{LNXT:50|51|-1}
+(*) UDINT
+005BA79C  E92D 0021		stmdb sp!, { r0, r5 }
+005BA7A0  F8DF 7584		ldr r7, [pc, #+1412] ; 0x28
+005BA7A4  19F5     		add r5, r6, r7
+005BA7A6  F8DF 4670		ldr r4, [pc, #+1648] ; 0x5BA3F8
+005BA7AA  F044 0401		orr r4, r4, #1
+005BA7AE  47A0     		blx r4
+005BA7B0  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#90		
+#91			(* StatoRunTOFF *)
+#92			MOVE		IN_FILTER_RUN_STATE_OFF_mSec,StatoRunTOFF.PT	{LNXT:51|-1|-1}
+(*) UDINT
+005BA7B4  F8DF 7614		ldr r7, [pc, #+1556] ; 0xD4
+005BA7B8  5BF0     		ldrh r0, [r6, +r7]
+005BA7BA  F8DF 7584		ldr r7, [pc, #+1412] ; 0x44
+005BA7BE  51F0     		str r0, [r6, +r7]
+
+#93			CAL		StatoRunTOFF	{LNXT:51|52|-1}
+(*) UDINT
+005BA7C0  E92D 0021		stmdb sp!, { r0, r5 }
+005BA7C4  F8DF 7570		ldr r7, [pc, #+1392] ; 0x3C
+005BA7C8  19F5     		add r5, r6, r7
+005BA7CA  F8DF 464C		ldr r4, [pc, #+1612] ; 0x5BA3F8
+005BA7CE  F044 0401		orr r4, r4, #1
+005BA7D2  47A0     		blx r4
+005BA7D4  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#94		
+#95			(* StatoRunTON.IN:=(I_Stato); *)
+#96			MOVE		I_Stato,StatoRunTON.IN	{LNXT:52|53|-1}
+(*) UDINT
+005BA7D8  F8DF 7540		ldr r7, [pc, #+1344] ; 0x22
+005BA7DC  5DF0     		ldrb r0, [r6, +r7]
+005BA7DE  F8DF 754C		ldr r7, [pc, #+1356] ; 0x2C
+005BA7E2  55F0     		strb r0, [r6, +r7]
+
+#97		
+#98			(* StatoRunTOFF.IN:=(NOT I_Stato); *)
+#99			LD		I_Stato	{LNXT:53|54|-1}
+(*) UNDEF
+005BA7E4  F8DF 7534		ldr r7, [pc, #+1332] ; 0x22
+005BA7E8  5DF0     		ldrb r0, [r6, +r7]
+
+#100			NOT	{LNXT:53|54|-1}
+(*) BOOL
+005BA7EA  2800     		cmp r0, #0
+005BA7EC  BF08 2001		eqmov r0, #1
+005BA7F0  BF18 2000		nemov r0, #0
+
+#101			ST		StatoRunTOFF.IN	{LNXT:53|54|-1}
+(*) BOOL
+005BA7F4  F8DF 7544		ldr r7, [pc, #+1348] ; 0x40
+005BA7F8  55F0     		strb r0, [r6, +r7]
+
+#102		
+#103			(* bStatoRun:=(StatoRunTON.Q AND (NOT StatoRunTOFF.Q) AND (NOT bAppStatoRun)); *)
+#104			LD		bAppStatoRun	{LNXT:54|55|-1}
+(*) UNDEF
+005BA7FA  F8DF 7528		ldr r7, [pc, #+1320] ; 0x24
+005BA7FE  5DF0     		ldrb r0, [r6, +r7]
+
+#105			NOT	{LNXT:54|55|-1}
+(*) BOOL
+005BA800  2800     		cmp r0, #0
+005BA802  BF08 2001		eqmov r0, #1
+005BA806  BF18 2000		nemov r0, #0
+
+#106			AND(		StatoRunTOFF.Q	{LNXT:54|55|-1}
+(*) BOOL
+005BA80A  B082     		sub sp, sp, #8
+005BA80C  F8CD 0000		str r0, [sp]
+005BA810  F8DF 7530		ldr r7, [pc, #+1328] ; 0x48
+005BA814  5DF0     		ldrb r0, [r6, +r7]
+
+#107			NOT	{LNXT:54|55|-1}
+(*) BOOL
+005BA816  2800     		cmp r0, #0
+005BA818  BF08 2001		eqmov r0, #1
+005BA81C  BF18 2000		nemov r0, #0
+
+#108			AND		StatoRunTON.Q	{LNXT:54|55|-1}
+(*) BOOL
+005BA820  F8DF 7510		ldr r7, [pc, #+1296] ; 0x34
+005BA824  5DF7     		ldrb r7, [r6, +r7]
+005BA826  4038     		and r0, r0, r7
+
+#109			)	{LNXT:54|55|-1}
+(*) BOOL
+005BA828  4607     		mov r7, r0
+005BA82A  F8DD 0000		ldr r0, [sp]
+005BA82E  B002     		add sp, sp, #8
+005BA830  4038     		and r0, r0, r7
+
+#110			ST		bStatoRun	{LNXT:54|55|-1}
+(*) BOOL
+005BA832  F8DF 74EC		ldr r7, [pc, #+1260] ; 0x23
+005BA836  55F0     		strb r0, [r6, +r7]
+
+#111		
+#112			(* bAppStatoRun:=(StatoRunTON.Q AND (NOT StatoRunTOFF.Q)); *)
+#113			LD		StatoRunTOFF.Q	{LNXT:55|58|-1}
+(*) UNDEF
+005BA838  F8DF 7508		ldr r7, [pc, #+1288] ; 0x48
+005BA83C  5DF0     		ldrb r0, [r6, +r7]
+
+#114			NOT	{LNXT:55|58|-1}
+(*) BOOL
+005BA83E  2800     		cmp r0, #0
+005BA840  BF08 2001		eqmov r0, #1
+005BA844  BF18 2000		nemov r0, #0
+
+#115			AND		StatoRunTON.Q	{LNXT:55|58|-1}
+(*) BOOL
+005BA848  F8DF 74E8		ldr r7, [pc, #+1256] ; 0x34
+005BA84C  5DF7     		ldrb r7, [r6, +r7]
+005BA84E  4038     		and r0, r0, r7
+
+#116			ST		bAppStatoRun	{LNXT:55|58|-1}
+(*) BOOL
+005BA850  F8DF 74D0		ldr r7, [pc, #+1232] ; 0x24
+005BA854  55F0     		strb r0, [r6, +r7]
+
+#117		
+#118		
+#119			(* IF bStatoRun AND 
+#120			     I_Enable *)
+#121			LD		bStatoRun	{LNXT:58|-1|-1}
+(*) UNDEF
+005BA856  F8DF 74C8		ldr r7, [pc, #+1224] ; 0x23
+005BA85A  5DF0     		ldrb r0, [r6, +r7]
+
+#122			AND		I_Enable	{LNXT:58|-1|-1}
+(*) BOOL
+005BA85C  F8DF 74AC		ldr r7, [pc, #+1196] ; 0x1E
+005BA860  5DF7     		ldrb r7, [r6, +r7]
+005BA862  4038     		and r0, r0, r7
+
+#123			JMPCN	$label1	{LNXT:58|61|65}
+(-) BOOL
+005BA864  2800     		cmp r0, #0
+005BA866  D004     		beq #8 ; 0x005BA872
+
+
+#124		
+#125			(* THEN *)
+#126		
+#127				(* OUT_RUN_STATE_bool := TRUE; *)
+#128				MOVE		TRUE,OUT_RUN_STATE_bool	{LNXT:61|65|-1}
+(*) BOOL
+005BA86A  2001     		mov r0, #1 ; 1
+005BA86C  F8DF 7588		ldr r7, [pc, #+1416] ; 0xF1
+005BA870  55F0     		strb r0, [r6, +r7]
+
+#129		
+#130		$label1:
+#131			(* END_IF *)
+#132		
+#133		
+#134			(* IF StatoRunTOFF.Q) OR
+#135			    (NOT I_Enable *)
+#136			LD		I_Enable	{LNXT:65|-1|-1}
+(*) UNDEF
+005BA872  F8DF 7498		ldr r7, [pc, #+1176] ; 0x1E
+005BA876  5DF0     		ldrb r0, [r6, +r7]
+
+#137			NOT	{LNXT:65|-1|-1}
+(*) BOOL
+005BA878  2800     		cmp r0, #0
+005BA87A  BF08 2001		eqmov r0, #1
+005BA87E  BF18 2000		nemov r0, #0
+
+#138			OR		StatoRunTOFF.Q	{LNXT:65|-1|-1}
+(*) BOOL
+005BA882  F8DF 74C0		ldr r7, [pc, #+1216] ; 0x48
+005BA886  5DF7     		ldrb r7, [r6, +r7]
+005BA888  4338     		orr r0, r0, r7
+
+#139			JMPCN	$label2	{LNXT:65|68|75}
+(-) BOOL
+005BA88A  2800     		cmp r0, #0
+005BA88C  D004     		beq #8 ; 0x005BA898
+
+
+#140		
+#141			(* THEN *)
+#142		
+#143				(* OUT_RUN_STATE_bool := FALSE; *)
+#144				MOVE		FALSE,OUT_RUN_STATE_bool	{LNXT:68|75|-1}
+(*) BOOL
+005BA890  2000     		mov r0, #0 ; 0
+005BA892  F8DF 7564		ldr r7, [pc, #+1380] ; 0xF1
+005BA896  55F0     		strb r0, [r6, +r7]
+
+#145		
+#146		$label2:
+#147			(* END_IF *)
+#148		
+#149			(* CntRTATON *)
+#150			MOVE		IN_FILTER_CNT_A_ON_mSec,CntRTATON.PT	{LNXT:75|-1|-1}
+(*) BOOL
+005BA898  F8DF 7534		ldr r7, [pc, #+1332] ; 0xD6
+005BA89C  5BF0     		ldrh r0, [r6, +r7]
+005BA89E  F8DF 74BC		ldr r7, [pc, #+1212] ; 0x60
+005BA8A2  51F0     		str r0, [r6, +r7]
+
+#151			CAL		CntRTATON	{LNXT:75|76|-1}
+(*) UDINT
+005BA8A4  E92D 0021		stmdb sp!, { r0, r5 }
+005BA8A8  F8DF 74A8		ldr r7, [pc, #+1192] ; 0x58
+005BA8AC  19F5     		add r5, r6, r7
+005BA8AE  F8DF 4568		ldr r4, [pc, #+1384] ; 0x5BA3F8
+005BA8B2  F044 0401		orr r4, r4, #1
+005BA8B6  47A0     		blx r4
+005BA8B8  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#152		
+#153			(* CntRTATOFF *)
+#154			MOVE		IN_FILTER_CNT_A_OFF_mSec,CntRTATOFF.PT	{LNXT:76|-1|-1}
+(*) UDINT
+005BA8BC  F8DF 7514		ldr r7, [pc, #+1300] ; 0xD8
+005BA8C0  5BF0     		ldrh r0, [r6, +r7]
+005BA8C2  F8DF 74A8		ldr r7, [pc, #+1192] ; 0x74
+005BA8C6  51F0     		str r0, [r6, +r7]
+
+#155			CAL		CntRTATOFF	{LNXT:76|77|-1}
+(*) UDINT
+005BA8C8  E92D 0021		stmdb sp!, { r0, r5 }
+005BA8CC  F8DF 7494		ldr r7, [pc, #+1172] ; 0x6C
+005BA8D0  19F5     		add r5, r6, r7
+005BA8D2  F8DF 4544		ldr r4, [pc, #+1348] ; 0x5BA3F8
+005BA8D6  F044 0401		orr r4, r4, #1
+005BA8DA  47A0     		blx r4
+005BA8DC  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#156		
+#157			(* CntRTATON.IN:=(I_ProdA); *)
+#158			MOVE		I_ProdA,CntRTATON.IN	{LNXT:77|78|-1}
+(*) UDINT
+005BA8E0  F8DF 7464		ldr r7, [pc, #+1124] ; 0x50
+005BA8E4  5DF0     		ldrb r0, [r6, +r7]
+005BA8E6  F8DF 7470		ldr r7, [pc, #+1136] ; 0x5C
+005BA8EA  55F0     		strb r0, [r6, +r7]
+
+#159		
+#160			(* CntRTATOFF.IN:=(NOT I_ProdA); *)
+#161			LD		I_ProdA	{LNXT:78|79|-1}
+(*) UNDEF
+005BA8EC  F8DF 7458		ldr r7, [pc, #+1112] ; 0x50
+005BA8F0  5DF0     		ldrb r0, [r6, +r7]
+
+#162			NOT	{LNXT:78|79|-1}
+(*) BOOL
+005BA8F2  2800     		cmp r0, #0
+005BA8F4  BF08 2001		eqmov r0, #1
+005BA8F8  BF18 2000		nemov r0, #0
+
+#163			ST		CntRTATOFF.IN	{LNXT:78|79|-1}
+(*) BOOL
+005BA8FC  F8DF 7468		ldr r7, [pc, #+1128] ; 0x70
+005BA900  55F0     		strb r0, [r6, +r7]
+
+#164		
+#165			(* bCntRTA:=(CntRTATON.Q AND (NOT CntRTATOFF.Q) AND (NOT bAppCntRTA)); *)
+#166			LD		bAppCntRTA	{LNXT:79|80|-1}
+(*) UNDEF
+005BA902  F8DF 744C		ldr r7, [pc, #+1100] ; 0x52
+005BA906  5DF0     		ldrb r0, [r6, +r7]
+
+#167			NOT	{LNXT:79|80|-1}
+(*) BOOL
+005BA908  2800     		cmp r0, #0
+005BA90A  BF08 2001		eqmov r0, #1
+005BA90E  BF18 2000		nemov r0, #0
+
+#168			AND(		CntRTATOFF.Q	{LNXT:79|80|-1}
+(*) BOOL
+005BA912  B082     		sub sp, sp, #8
+005BA914  F8CD 0000		str r0, [sp]
+005BA918  F8DF 7454		ldr r7, [pc, #+1108] ; 0x78
+005BA91C  5DF0     		ldrb r0, [r6, +r7]
+
+#169			NOT	{LNXT:79|80|-1}
+(*) BOOL
+005BA91E  2800     		cmp r0, #0
+005BA920  BF08 2001		eqmov r0, #1
+005BA924  BF18 2000		nemov r0, #0
+
+#170			AND		CntRTATON.Q	{LNXT:79|80|-1}
+(*) BOOL
+005BA928  F8DF 7434		ldr r7, [pc, #+1076] ; 0x64
+005BA92C  5DF7     		ldrb r7, [r6, +r7]
+005BA92E  4038     		and r0, r0, r7
+
+#171			)	{LNXT:79|80|-1}
+(*) BOOL
+005BA930  4607     		mov r7, r0
+005BA932  F8DD 0000		ldr r0, [sp]
+005BA936  B002     		add sp, sp, #8
+005BA938  4038     		and r0, r0, r7
+
+#172			ST		bCntRTA	{LNXT:79|80|-1}
+(*) BOOL
+005BA93A  F8DF 7410		ldr r7, [pc, #+1040] ; 0x51
+005BA93E  55F0     		strb r0, [r6, +r7]
+
+#173		
+#174			(* bAppCntRTA:=(CntRTATON.Q AND (NOT CntRTATOFF.Q)); *)
+#175			LD		CntRTATOFF.Q	{LNXT:80|83|-1}
+(*) UNDEF
+005BA940  F8DF 742C		ldr r7, [pc, #+1068] ; 0x78
+005BA944  5DF0     		ldrb r0, [r6, +r7]
+
+#176			NOT	{LNXT:80|83|-1}
+(*) BOOL
+005BA946  2800     		cmp r0, #0
+005BA948  BF08 2001		eqmov r0, #1
+005BA94C  BF18 2000		nemov r0, #0
+
+#177			AND		CntRTATON.Q	{LNXT:80|83|-1}
+(*) BOOL
+005BA950  F8DF 740C		ldr r7, [pc, #+1036] ; 0x64
+005BA954  5DF7     		ldrb r7, [r6, +r7]
+005BA956  4038     		and r0, r0, r7
+
+#178			ST		bAppCntRTA	{LNXT:80|83|-1}
+(*) BOOL
+005BA958  F8DF 73F4		ldr r7, [pc, #+1012] ; 0x52
+005BA95C  55F0     		strb r0, [r6, +r7]
+
+#179		
+#180		
+#181			(* IF bCntRTA AND 
+#182				 OUT_RUN_STATE_bool AND 
+#183				 I_Enable AND
+#184				 NOT I_Fermo AND 
+#185				 NOT I_PreSetCnt AND
+#186				 NOT I_ResetCnt *)
+#187			LD		I_ResetCnt	{LNXT:83|-1|-1}
+(*) UNDEF
+005BA95E  F8DF 73B4		ldr r7, [pc, #+948] ; 0x20
+005BA962  5DF0     		ldrb r0, [r6, +r7]
+
+#188			NOT	{LNXT:83|-1|-1}
+(*) BOOL
+005BA964  2800     		cmp r0, #0
+005BA966  BF08 2001		eqmov r0, #1
+005BA96A  BF18 2000		nemov r0, #0
+
+#189			AND(		I_PreSetCnt	{LNXT:83|-1|-1}
+(*) BOOL
+005BA96E  B082     		sub sp, sp, #8
+005BA970  F8CD 0000		str r0, [sp]
+005BA974  F8DF 73A0		ldr r7, [pc, #+928] ; 0x21
+005BA978  5DF0     		ldrb r0, [r6, +r7]
+
+#190			NOT	{LNXT:83|-1|-1}
+(*) BOOL
+005BA97A  2800     		cmp r0, #0
+005BA97C  BF08 2001		eqmov r0, #1
+005BA980  BF18 2000		nemov r0, #0
+
+#191			AND(		I_Fermo	{LNXT:83|-1|-1}
+(*) BOOL
+005BA984  B082     		sub sp, sp, #8
+005BA986  F8CD 0000		str r0, [sp]
+005BA98A  F8DF 7384		ldr r7, [pc, #+900] ; 0x1F
+005BA98E  5DF0     		ldrb r0, [r6, +r7]
+
+#192			NOT	{LNXT:83|-1|-1}
+(*) BOOL
+005BA990  2800     		cmp r0, #0
+005BA992  BF08 2001		eqmov r0, #1
+005BA996  BF18 2000		nemov r0, #0
+
+#193			AND(		bCntRTA	{LNXT:83|-1|-1}
+(*) BOOL
+005BA99A  B082     		sub sp, sp, #8
+005BA99C  F8CD 0000		str r0, [sp]
+005BA9A0  F8DF 73A8		ldr r7, [pc, #+936] ; 0x51
+005BA9A4  5DF0     		ldrb r0, [r6, +r7]
+
+#194			AND		OUT_RUN_STATE_bool	{LNXT:83|-1|-1}
+(*) BOOL
+005BA9A6  F8DF 7450		ldr r7, [pc, #+1104] ; 0xF1
+005BA9AA  5DF7     		ldrb r7, [r6, +r7]
+005BA9AC  4038     		and r0, r0, r7
+
+#195			AND		I_Enable	{LNXT:83|-1|-1}
+(*) BOOL
+005BA9AE  F8DF 735C		ldr r7, [pc, #+860] ; 0x1E
+005BA9B2  5DF7     		ldrb r7, [r6, +r7]
+005BA9B4  4038     		and r0, r0, r7
+
+#196			)	{LNXT:83|-1|-1}
+(*) BOOL
+005BA9B6  4607     		mov r7, r0
+005BA9B8  F8DD 0000		ldr r0, [sp]
+005BA9BC  B002     		add sp, sp, #8
+005BA9BE  4038     		and r0, r0, r7
+
+#197			)	{LNXT:83|-1|-1}
+(*) BOOL
+005BA9C0  4607     		mov r7, r0
+005BA9C2  F8DD 0000		ldr r0, [sp]
+005BA9C6  B002     		add sp, sp, #8
+005BA9C8  4038     		and r0, r0, r7
+
+#198			)	{LNXT:83|-1|-1}
+(*) BOOL
+005BA9CA  4607     		mov r7, r0
+005BA9CC  F8DD 0000		ldr r0, [sp]
+005BA9D0  B002     		add sp, sp, #8
+005BA9D2  4038     		and r0, r0, r7
+
+#199			JMPCN	$label3	{LNXT:83|90|96}
+(-) BOOL
+005BA9D4  2800     		cmp r0, #0
+005BA9D6  D015     		beq #42 ; 0x005BAA04
+
+
+#200		
+#201			(* THEN *)
+#202		
+#203				(* OUT_COUNTER_A_dUInt:= OUT_COUNTER_A_dUInt + IN_CNT_A_STEP_UP; *)
+#204				LD		OUT_COUNTER_A_dUInt	{LNXT:90|96|-1}
+(*) UNDEF
+005BA9DA  F8DF 7420		ldr r7, [pc, #+1056] ; 0xF4
+005BA9DE  59F0     		ldr r0, [r6, +r7]
+
+#205				ADD		IN_CNT_A_STEP_UP	{LNXT:90|96|-1}
+(*) REAL
+005BA9E0  F8DF 7408		ldr r7, [pc, #+1032] ; 0xE8
+005BA9E4  59F7     		ldr r7, [r6, +r7]
+005BA9E6  B082     		sub sp, sp, #8
+005BA9E8  F8CD 1000		str r1, [sp]
+005BA9EC  4639     		mov r1, r7
+005BA9EE  F8DF 441C		ldr r4, [pc, #+1052] ; 0x4B94D5
+005BA9F2  F044 0401		orr r4, r4, #1
+005BA9F6  47A0     		blx r4
+005BA9F8  F8DD 1000		ldr r1, [sp]
+005BA9FC  B002     		add sp, sp, #8
+
+#206				ST		OUT_COUNTER_A_dUInt	{LNXT:90|96|-1}
+(*) REAL
+005BA9FE  F8DF 73FC		ldr r7, [pc, #+1020] ; 0xF4
+005BAA02  51F0     		str r0, [r6, +r7]
+
+#207		
+#208		$label3:
+#209			(* END_IF *)
+#210		
+#211			(* CntRTBTON *)
+#212			MOVE		IN_FILTER_CNT_B_ON_mSec,CntRTBTON.PT	{LNXT:96|-1|-1}
+(*) REAL
+005BAA04  F8DF 73D0		ldr r7, [pc, #+976] ; 0xDA
+005BAA08  5BF0     		ldrh r0, [r6, +r7]
+005BAA0A  F8DF 737C		ldr r7, [pc, #+892] ; 0x90
+005BAA0E  51F0     		str r0, [r6, +r7]
+
+#213			CAL		CntRTBTON	{LNXT:96|97|-1}
+(*) UDINT
+005BAA10  E92D 0021		stmdb sp!, { r0, r5 }
+005BAA14  F8DF 7368		ldr r7, [pc, #+872] ; 0x88
+005BAA18  19F5     		add r5, r6, r7
+005BAA1A  F8DF 43FC		ldr r4, [pc, #+1020] ; 0x5BA3F8
+005BAA1E  F044 0401		orr r4, r4, #1
+005BAA22  47A0     		blx r4
+005BAA24  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#214		
+#215			(* CntRTBTOFF *)
+#216			MOVE		IN_FILTER_CNT_B_OFF_mSec,CntRTBTOFF.PT	{LNXT:97|-1|-1}
+(*) UDINT
+005BAA28  F8DF 73B0		ldr r7, [pc, #+944] ; 0xDC
+005BAA2C  5BF0     		ldrh r0, [r6, +r7]
+005BAA2E  F8DF 7368		ldr r7, [pc, #+872] ; 0xA4
+005BAA32  51F0     		str r0, [r6, +r7]
+
+#217			CAL		CntRTBTOFF	{LNXT:97|98|-1}
+(*) UDINT
+005BAA34  E92D 0021		stmdb sp!, { r0, r5 }
+005BAA38  F8DF 7354		ldr r7, [pc, #+852] ; 0x9C
+005BAA3C  19F5     		add r5, r6, r7
+005BAA3E  F8DF 43D8		ldr r4, [pc, #+984] ; 0x5BA3F8
+005BAA42  F044 0401		orr r4, r4, #1
+005BAA46  47A0     		blx r4
+005BAA48  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#218		
+#219			(* CntRTBTON.IN:=(I_ProdB); *)
+#220			MOVE		I_ProdB,CntRTBTON.IN	{LNXT:98|99|-1}
+(*) UDINT
+005BAA4C  F8DF 7324		ldr r7, [pc, #+804] ; 0x80
+005BAA50  5DF0     		ldrb r0, [r6, +r7]
+005BAA52  F8DF 7330		ldr r7, [pc, #+816] ; 0x8C
+005BAA56  55F0     		strb r0, [r6, +r7]
+
+#221		
+#222			(* CntRTBTOFF.IN:=(NOT I_ProdB); *)
+#223			LD		I_ProdB	{LNXT:99|100|-1}
+(*) UNDEF
+005BAA58  F8DF 7318		ldr r7, [pc, #+792] ; 0x80
+005BAA5C  5DF0     		ldrb r0, [r6, +r7]
+
+#224			NOT	{LNXT:99|100|-1}
+(*) BOOL
+005BAA5E  2800     		cmp r0, #0
+005BAA60  BF08 2001		eqmov r0, #1
+005BAA64  BF18 2000		nemov r0, #0
+
+#225			ST		CntRTBTOFF.IN	{LNXT:99|100|-1}
+(*) BOOL
+005BAA68  F8DF 7328		ldr r7, [pc, #+808] ; 0xA0
+005BAA6C  55F0     		strb r0, [r6, +r7]
+
+#226		
+#227			(* bCntRTB:=(CntRTBTON.Q AND (NOT CntRTBTOFF.Q) AND (NOT bAppCntRTB)); *)
+#228			LD		bAppCntRTB	{LNXT:100|101|-1}
+(*) UNDEF
+005BAA6E  F8DF 730C		ldr r7, [pc, #+780] ; 0x82
+005BAA72  5DF0     		ldrb r0, [r6, +r7]
+
+#229			NOT	{LNXT:100|101|-1}
+(*) BOOL
+005BAA74  2800     		cmp r0, #0
+005BAA76  BF08 2001		eqmov r0, #1
+005BAA7A  BF18 2000		nemov r0, #0
+
+#230			AND(		CntRTBTOFF.Q	{LNXT:100|101|-1}
+(*) BOOL
+005BAA7E  B082     		sub sp, sp, #8
+005BAA80  F8CD 0000		str r0, [sp]
+005BAA84  F8DF 7314		ldr r7, [pc, #+788] ; 0xA8
+005BAA88  5DF0     		ldrb r0, [r6, +r7]
+
+#231			NOT	{LNXT:100|101|-1}
+(*) BOOL
+005BAA8A  2800     		cmp r0, #0
+005BAA8C  BF08 2001		eqmov r0, #1
+005BAA90  BF18 2000		nemov r0, #0
+
+#232			AND		CntRTBTON.Q	{LNXT:100|101|-1}
+(*) BOOL
+005BAA94  F8DF 72F4		ldr r7, [pc, #+756] ; 0x94
+005BAA98  5DF7     		ldrb r7, [r6, +r7]
+005BAA9A  4038     		and r0, r0, r7
+
+#233			)	{LNXT:100|101|-1}
+(*) BOOL
+005BAA9C  4607     		mov r7, r0
+005BAA9E  F8DD 0000		ldr r0, [sp]
+005BAAA2  B002     		add sp, sp, #8
+005BAAA4  4038     		and r0, r0, r7
+
+#234			ST		bCntRTB	{LNXT:100|101|-1}
+(*) BOOL
+005BAAA6  F8DF 72D0		ldr r7, [pc, #+720] ; 0x81
+005BAAAA  55F0     		strb r0, [r6, +r7]
+
+#235		
+#236			(* bAppCntRTB:=(CntRTBTON.Q AND (NOT CntRTBTOFF.Q)); *)
+#237			LD		CntRTBTOFF.Q	{LNXT:101|104|-1}
+(*) UNDEF
+005BAAAC  F8DF 72EC		ldr r7, [pc, #+748] ; 0xA8
+005BAAB0  5DF0     		ldrb r0, [r6, +r7]
+
+#238			NOT	{LNXT:101|104|-1}
+(*) BOOL
+005BAAB2  2800     		cmp r0, #0
+005BAAB4  BF08 2001		eqmov r0, #1
+005BAAB8  BF18 2000		nemov r0, #0
+
+#239			AND		CntRTBTON.Q	{LNXT:101|104|-1}
+(*) BOOL
+005BAABC  F8DF 72CC		ldr r7, [pc, #+716] ; 0x94
+005BAAC0  5DF7     		ldrb r7, [r6, +r7]
+005BAAC2  4038     		and r0, r0, r7
+
+#240			ST		bAppCntRTB	{LNXT:101|104|-1}
+(*) BOOL
+005BAAC4  F8DF 72B4		ldr r7, [pc, #+692] ; 0x82
+005BAAC8  55F0     		strb r0, [r6, +r7]
+
+#241		
+#242		
+#243			(* IF bCntRTB AND 
+#244			     OUT_RUN_STATE_bool AND 
+#245			     I_Enable AND
+#246			     (NOT I_Fermo) AND
+#247			     (NOT I_PreSetCnt) AND
+#248			     (NOT I_ResetCnt *)
+#249			LD		I_ResetCnt	{LNXT:104|-1|-1}
+(*) UNDEF
+005BAACA  F8DF 7248		ldr r7, [pc, #+584] ; 0x20
+005BAACE  5DF0     		ldrb r0, [r6, +r7]
+
+#250			NOT	{LNXT:104|-1|-1}
+(*) BOOL
+005BAAD0  2800     		cmp r0, #0
+005BAAD2  BF08 2001		eqmov r0, #1
+005BAAD6  BF18 2000		nemov r0, #0
+
+#251			AND(		I_PreSetCnt	{LNXT:104|-1|-1}
+(*) BOOL
+005BAADA  B082     		sub sp, sp, #8
+005BAADC  F8CD 0000		str r0, [sp]
+005BAAE0  F8DF 7234		ldr r7, [pc, #+564] ; 0x21
+005BAAE4  5DF0     		ldrb r0, [r6, +r7]
+
+#252			NOT	{LNXT:104|-1|-1}
+(*) BOOL
+005BAAE6  2800     		cmp r0, #0
+005BAAE8  BF08 2001		eqmov r0, #1
+005BAAEC  BF18 2000		nemov r0, #0
+
+#253			AND(		I_Fermo	{LNXT:104|-1|-1}
+(*) BOOL
+005BAAF0  B082     		sub sp, sp, #8
+005BAAF2  F8CD 0000		str r0, [sp]
+005BAAF6  F8DF 7218		ldr r7, [pc, #+536] ; 0x1F
+005BAAFA  5DF0     		ldrb r0, [r6, +r7]
+
+#254			NOT	{LNXT:104|-1|-1}
+(*) BOOL
+005BAAFC  2800     		cmp r0, #0
+005BAAFE  BF08 2001		eqmov r0, #1
+005BAB02  BF18 2000		nemov r0, #0
+
+#255			AND(		bCntRTB	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB06  B082     		sub sp, sp, #8
+005BAB08  F8CD 0000		str r0, [sp]
+005BAB0C  F8DF 7268		ldr r7, [pc, #+616] ; 0x81
+005BAB10  5DF0     		ldrb r0, [r6, +r7]
+
+#256			AND		OUT_RUN_STATE_bool	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB12  F8DF 72E4		ldr r7, [pc, #+740] ; 0xF1
+005BAB16  5DF7     		ldrb r7, [r6, +r7]
+005BAB18  4038     		and r0, r0, r7
+
+#257			AND		I_Enable	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB1A  F8DF 71F0		ldr r7, [pc, #+496] ; 0x1E
+005BAB1E  5DF7     		ldrb r7, [r6, +r7]
+005BAB20  4038     		and r0, r0, r7
+
+#258			)	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB22  4607     		mov r7, r0
+005BAB24  F8DD 0000		ldr r0, [sp]
+005BAB28  B002     		add sp, sp, #8
+005BAB2A  4038     		and r0, r0, r7
+
+#259			)	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB2C  4607     		mov r7, r0
+005BAB2E  F8DD 0000		ldr r0, [sp]
+005BAB32  B002     		add sp, sp, #8
+005BAB34  4038     		and r0, r0, r7
+
+#260			)	{LNXT:104|-1|-1}
+(*) BOOL
+005BAB36  4607     		mov r7, r0
+005BAB38  F8DD 0000		ldr r0, [sp]
+005BAB3C  B002     		add sp, sp, #8
+005BAB3E  4038     		and r0, r0, r7
+
+#261			JMPCN	$label4	{LNXT:104|111|117}
+(-) BOOL
+005BAB40  2800     		cmp r0, #0
+005BAB42  D015     		beq #42 ; 0x005BAB70
+
+
+#262		
+#263			(* THEN *)
+#264		
+#265				(* OUT_COUNTER_B_dUInt:= OUT_COUNTER_B_dUInt + IN_CNT_B_STEP_UP; *)
+#266				LD		OUT_COUNTER_B_dUInt	{LNXT:111|117|-1}
+(*) UNDEF
+005BAB46  F8DF 72B8		ldr r7, [pc, #+696] ; 0xF8
+005BAB4A  59F0     		ldr r0, [r6, +r7]
+
+#267				ADD		IN_CNT_B_STEP_UP	{LNXT:111|117|-1}
+(*) REAL
+005BAB4C  F8DF 72A0		ldr r7, [pc, #+672] ; 0xEC
+005BAB50  59F7     		ldr r7, [r6, +r7]
+005BAB52  B082     		sub sp, sp, #8
+005BAB54  F8CD 1000		str r1, [sp]
+005BAB58  4639     		mov r1, r7
+005BAB5A  F8DF 42B0		ldr r4, [pc, #+688] ; 0x4B94D5
+005BAB5E  F044 0401		orr r4, r4, #1
+005BAB62  47A0     		blx r4
+005BAB64  F8DD 1000		ldr r1, [sp]
+005BAB68  B002     		add sp, sp, #8
+
+#268				ST		OUT_COUNTER_B_dUInt	{LNXT:111|117|-1}
+(*) REAL
+005BAB6A  F8DF 7294		ldr r7, [pc, #+660] ; 0xF8
+005BAB6E  51F0     		str r0, [r6, +r7]
+
+#269		
+#270		$label4:
+#271			(* END_IF *)
+#272		
+#273		
+#274			(* IF I_ResetCnt AND I_Enable *)
+#275			LD		I_ResetCnt	{LNXT:117|-1|-1}
+(*) UNDEF
+005BAB70  F8DF 71A0		ldr r7, [pc, #+416] ; 0x20
+005BAB74  5DF0     		ldrb r0, [r6, +r7]
+
+#276			AND		I_Enable	{LNXT:117|-1|-1}
+(*) BOOL
+005BAB76  F8DF 7194		ldr r7, [pc, #+404] ; 0x1E
+005BAB7A  5DF7     		ldrb r7, [r6, +r7]
+005BAB7C  4038     		and r0, r0, r7
+
+#277			JMPCN	$label5	{LNXT:117|118|127}
+(-) BOOL
+005BAB7E  2800     		cmp r0, #0
+005BAB80  D012     		beq #36 ; 0x005BABA8
+
+
+#278		
+#279			(* THEN *)
+#280		
+#281				(* OUT_COUNTER_A_dUInt := 0; *)
+#282				MOVE		0,OUT_COUNTER_A_dUInt	{LNXT:118|119|-1}
+(*) BOOL
+005BAB84  2000     		mov r0, #0 ; 0
+005BAB86  F8DF 4280		ldr r4, [pc, #+640] ; 0x4B946D
+005BAB8A  F044 0401		orr r4, r4, #1
+005BAB8E  47A0     		blx r4
+005BAB90  F8DF 7268		ldr r7, [pc, #+616] ; 0xF4
+005BAB94  51F0     		str r0, [r6, +r7]
+
+#283		
+#284				(* OUT_COUNTER_B_dUInt := 0; *)
+#285				MOVE		0,OUT_COUNTER_B_dUInt	{LNXT:119|127|-1}
+(*) REAL
+005BAB96  2000     		mov r0, #0 ; 0
+005BAB98  F8DF 426C		ldr r4, [pc, #+620] ; 0x4B946D
+005BAB9C  F044 0401		orr r4, r4, #1
+005BABA0  47A0     		blx r4
+005BABA2  F8DF 725C		ldr r7, [pc, #+604] ; 0xF8
+005BABA6  51F0     		str r0, [r6, +r7]
+
+#286		
+#287		$label5:
+#288			(* END_IF *)
+#289		
+#290			(* bChanges := (OUT_RUN_STATE_bool <> OLD_OUT_RUN_STATE_bool); *)
+#291			LD		OUT_RUN_STATE_bool	{LNXT:127|132|-1}
+(*) UNDEF
+005BABA8  F8DF 724C		ldr r7, [pc, #+588] ; 0xF1
+005BABAC  5DF0     		ldrb r0, [r6, +r7]
+
+#292			NE		OLD_OUT_RUN_STATE_bool	{LNXT:127|132|-1}
+(*) BOOL
+005BABAE  F8DF 71F0		ldr r7, [pc, #+496] ; 0xB0
+005BABB2  5DF7     		ldrb r7, [r6, +r7]
+005BABB4  42B8     		cmp r0, r7
+005BABB6  BF08 2000		eqmov r0, #0
+005BABBA  BF18 2001		nemov r0, #1
+
+#293			ST		bChanges	{LNXT:127|132|-1}
+(*) BOOL
+005BABBE  F8DF 71F4		ldr r7, [pc, #+500] ; 0xC8
+005BABC2  55F0     		strb r0, [r6, +r7]
+
+#294		
+#295			(* tWarning *)
+#296			LD		IN_WARNING_DELAY_Sec	{LNXT:132|-1|-1}
+(*) UNDEF
+005BABC4  F8DF 7218		ldr r7, [pc, #+536] ; 0xDE
+005BABC8  5BF0     		ldrh r0, [r6, +r7]
+
+#297			MUL		1000	{LNXT:132|-1|-1}
+(*) WORD
+005BABCA  F44F 777A		mov r7, #1000 ; 1000
+005BABCE  4378     		mul r0, r0, r7
+
+#298			ST		tWarning.PT	{LNXT:132|-1|-1}
+(*) WORD
+005BABD0  F8DF 71D8		ldr r7, [pc, #+472] ; 0xBC
+005BABD4  51F0     		str r0, [r6, +r7]
+
+#299			CAL		tWarning	{LNXT:132|133|-1}
+(*) UDINT
+005BABD6  E92D 0021		stmdb sp!, { r0, r5 }
+005BABDA  F8DF 71C8		ldr r7, [pc, #+456] ; 0xB4
+005BABDE  19F5     		add r5, r6, r7
+005BABE0  F8DF 4234		ldr r4, [pc, #+564] ; 0x5BA3F8
+005BABE4  F044 0401		orr r4, r4, #1
+005BABE8  47A0     		blx r4
+005BABEA  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#300		
+#301			(* tWarning.IN:=(I_Enable AND OUT_RUN_STATE_bool AND (NOT I_Fermo) AND (NOT I_ResetCnt) AND (NOT bChanges)); *)
+#302			LD		bChanges	{LNXT:133|134|-1}
+(*) UNDEF
+005BABEE  F8DF 71C4		ldr r7, [pc, #+452] ; 0xC8
+005BABF2  5DF0     		ldrb r0, [r6, +r7]
+
+#303			NOT	{LNXT:133|134|-1}
+(*) BOOL
+005BABF4  2800     		cmp r0, #0
+005BABF6  BF08 2001		eqmov r0, #1
+005BABFA  BF18 2000		nemov r0, #0
+
+#304			AND(		I_ResetCnt	{LNXT:133|134|-1}
+(*) BOOL
+005BABFE  B082     		sub sp, sp, #8
+005BAC00  F8CD 0000		str r0, [sp]
+005BAC04  F8DF 710C		ldr r7, [pc, #+268] ; 0x20
+005BAC08  5DF0     		ldrb r0, [r6, +r7]
+
+#305			NOT	{LNXT:133|134|-1}
+(*) BOOL
+005BAC0A  2800     		cmp r0, #0
+005BAC0C  BF08 2001		eqmov r0, #1
+005BAC10  BF18 2000		nemov r0, #0
+
+#306			AND(		I_Fermo	{LNXT:133|134|-1}
+(*) BOOL
+005BAC14  B082     		sub sp, sp, #8
+005BAC16  F8CD 0000		str r0, [sp]
+005BAC1A  F8DF 70F4		ldr r7, [pc, #+244] ; 0x1F
+005BAC1E  5DF0     		ldrb r0, [r6, +r7]
+
+#307			NOT	{LNXT:133|134|-1}
+(*) BOOL
+005BAC20  2800     		cmp r0, #0
+005BAC22  BF08 2001		eqmov r0, #1
+005BAC26  BF18 2000		nemov r0, #0
+
+#308			AND(		I_Enable	{LNXT:133|134|-1}
+(*) BOOL
+005BAC2A  B082     		sub sp, sp, #8
+005BAC2C  F8CD 0000		str r0, [sp]
+005BAC30  F8DF 70D8		ldr r7, [pc, #+216] ; 0x1E
+005BAC34  5DF0     		ldrb r0, [r6, +r7]
+
+#309			AND		OUT_RUN_STATE_bool	{LNXT:133|134|-1}
+(*) BOOL
+005BAC36  F8DF 71C0		ldr r7, [pc, #+448] ; 0xF1
+005BAC3A  5DF7     		ldrb r7, [r6, +r7]
+005BAC3C  4038     		and r0, r0, r7
+
+#310			)	{LNXT:133|134|-1}
+(*) BOOL
+005BAC3E  4607     		mov r7, r0
+005BAC40  F8DD 0000		ldr r0, [sp]
+005BAC44  B002     		add sp, sp, #8
+005BAC46  4038     		and r0, r0, r7
+
+#311			)	{LNXT:133|134|-1}
+(*) BOOL
+005BAC48  4607     		mov r7, r0
+005BAC4A  F8DD 0000		ldr r0, [sp]
+005BAC4E  B002     		add sp, sp, #8
+005BAC50  4038     		and r0, r0, r7
+
+#312			)	{LNXT:133|134|-1}
+(*) BOOL
+005BAC52  4607     		mov r7, r0
+005BAC54  F8DD 0000		ldr r0, [sp]
+005BAC58  B002     		add sp, sp, #8
+005BAC5A  4038     		and r0, r0, r7
+
+#313			ST		tWarning.IN	{LNXT:133|134|-1}
+(*) BOOL
+005BAC5C  F8DF 7148		ldr r7, [pc, #+328] ; 0xB8
+005BAC60  55F0     		strb r0, [r6, +r7]
+
+#314		
+#315			(* OUT_WARNING_bool := tWarning.Q; *)
+#316			MOVE		tWarning.Q,OUT_WARNING_bool	{LNXT:134|140|-1}
+(*) BOOL
+005BAC62  F8DF 714C		ldr r7, [pc, #+332] ; 0xC0
+005BAC66  5DF0     		ldrb r0, [r6, +r7]
+005BAC68  F8DF 7198		ldr r7, [pc, #+408] ; 0xFC
+005BAC6C  55F0     		strb r0, [r6, +r7]
+
+#317		
+#318			(* PTrigger *)
+#319			LD		I_Enable	{LNXT:140|-1|-1}
+(*) UNDEF
+005BAC6E  F8DF 709C		ldr r7, [pc, #+156] ; 0x1E
+005BAC72  5DF0     		ldrb r0, [r6, +r7]
+
+#320			AND		bChanges	{LNXT:140|-1|-1}
+(*) BOOL
+005BAC74  F8DF 713C		ldr r7, [pc, #+316] ; 0xC8
+005BAC78  5DF7     		ldrb r7, [r6, +r7]
+005BAC7A  4038     		and r0, r0, r7
+
+#321			ST		PTrigger.CLK	{LNXT:140|-1|-1}
+(*) BOOL
+005BAC7C  F8DF 713C		ldr r7, [pc, #+316] ; 0xCE
+005BAC80  55F0     		strb r0, [r6, +r7]
+
+#322			CAL		PTrigger	{LNXT:140|141|-1}
+(*) BOOL
+005BAC82  E92D 0021		stmdb sp!, { r0, r5 }
+005BAC86  F8DF 7130		ldr r7, [pc, #+304] ; 0xCC
+005BAC8A  19F5     		add r5, r6, r7
+005BAC8C  F8DF 4184		ldr r4, [pc, #+388] ; 0x5BA360
+005BAC90  F044 0401		orr r4, r4, #1
+005BAC94  47A0     		blx r4
+005BAC96  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#323		
+#324			(* OUT_STROBE_bool := PTrigger.Q; *)
+#325			MOVE		PTrigger.Q,OUT_STROBE_bool	{LNXT:141|147|-1}
+(*) BOOL
+005BAC9A  F8DF 7124		ldr r7, [pc, #+292] ; 0xCF
+005BAC9E  5DF0     		ldrb r0, [r6, +r7]
+005BACA0  F8DF 7150		ldr r7, [pc, #+336] ; 0xF0
+005BACA4  55F0     		strb r0, [r6, +r7]
+
+#326		
+#327			(* OLD_OUT_RUN_STATE_bool := OUT_RUN_STATE_bool; *)
+#328			MOVE		OUT_RUN_STATE_bool,OLD_OUT_RUN_STATE_bool	{LNXT:147|148|-1}
+(*) BOOL
+005BACA6  F8DF 7150		ldr r7, [pc, #+336] ; 0xF1
+005BACAA  5DF0     		ldrb r0, [r6, +r7]
+005BACAC  F8DF 70F0		ldr r7, [pc, #+240] ; 0xB0
+005BACB0  55F0     		strb r0, [r6, +r7]
+
+#329		
+#330			(* bChanges := FALSE; *)
+#331			MOVE		FALSE,bChanges	{LNXT:148|-1|-1}
+(*) BOOL
+005BACB2  2000     		mov r0, #0 ; 0
+005BACB4  F8DF 70FC		ldr r7, [pc, #+252] ; 0xC8
+005BACB8  55F0     		strb r0, [r6, +r7]
+
+005BACBA  E8BD 4040		ldmia sp!, { r6, lr }
+
+005BACBE  4770     		bx lr
+
+005BACC0  00000001		; 0x00000001
+005BACC4  00000002		; 0x00000002
+005BACC8  00000003		; 0x00000003
+005BACCC  00000004		; 0x00000004
+005BACD0  00000005		; 0x00000005
+005BACD4  00000006		; 0x00000006
+005BACD8  00000007		; 0x00000007
+005BACDC  00000008		; 0x00000008
+005BACE0  0000000C		; 0x0000000C
+005BACE4  0000000D		; 0x0000000D
+005BACE8  00000012		; 0x00000012
+005BACEC  00000013		; 0x00000013
+005BACF0  00000014		; 0x00000014
+005BACF4  00000015		; 0x00000015
+005BACF8  00000019		; 0x00000019
+005BACFC  0000001A		; 0x0000001A
+005BAD00  0000001B		; 0x0000001B
+005BAD04  0000001C		; 0x0000001C
+005BAD08  0000001D		; 0x0000001D
+005BAD0C  0000001E		; 0x0000001E
+005BAD10  0000001F		; 0x0000001F
+005BAD14  00000020		; 0x00000020
+005BAD18  00000021		; 0x00000021
+005BAD1C  00000022		; 0x00000022
+005BAD20  00000023		; 0x00000023
+005BAD24  00000024		; 0x00000024
+005BAD28  00000028		; 0x00000028
+005BAD2C  0000002C		; 0x0000002C
+005BAD30  00000030		; 0x00000030
+005BAD34  00000034		; 0x00000034
+005BAD38  0000003C		; 0x0000003C
+005BAD3C  00000040		; 0x00000040
+005BAD40  00000044		; 0x00000044
+005BAD44  00000048		; 0x00000048
+005BAD48  00000050		; 0x00000050
+005BAD4C  00000051		; 0x00000051
+005BAD50  00000052		; 0x00000052
+005BAD54  00000058		; 0x00000058
+005BAD58  0000005C		; 0x0000005C
+005BAD5C  00000060		; 0x00000060
+005BAD60  00000064		; 0x00000064
+005BAD64  0000006C		; 0x0000006C
+005BAD68  00000070		; 0x00000070
+005BAD6C  00000074		; 0x00000074
+005BAD70  00000078		; 0x00000078
+005BAD74  00000080		; 0x00000080
+005BAD78  00000081		; 0x00000081
+005BAD7C  00000082		; 0x00000082
+005BAD80  00000088		; 0x00000088
+005BAD84  0000008C		; 0x0000008C
+005BAD88  00000090		; 0x00000090
+005BAD8C  00000094		; 0x00000094
+005BAD90  0000009C		; 0x0000009C
+005BAD94  000000A0		; 0x000000A0
+005BAD98  000000A4		; 0x000000A4
+005BAD9C  000000A8		; 0x000000A8
+005BADA0  000000B0		; 0x000000B0
+005BADA4  000000B4		; 0x000000B4
+005BADA8  000000B8		; 0x000000B8
+005BADAC  000000BC		; 0x000000BC
+005BADB0  000000C0		; 0x000000C0
+005BADB4  000000C8		; 0x000000C8
+005BADB8  000000CC		; 0x000000CC
+005BADBC  000000CE		; 0x000000CE
+005BADC0  000000CF		; 0x000000CF
+005BADC4  000000D0		; 0x000000D0
+005BADC8  000000D2		; 0x000000D2
+005BADCC  000000D4		; 0x000000D4
+005BADD0  000000D6		; 0x000000D6
+005BADD4  000000D8		; 0x000000D8
+005BADD8  000000DA		; 0x000000DA
+005BADDC  000000DC		; 0x000000DC
+005BADE0  000000DE		; 0x000000DE
+005BADE4  000000E0		; 0x000000E0
+005BADE8  000000E4		; 0x000000E4
+005BADEC  000000E8		; 0x000000E8
+005BADF0  000000EC		; 0x000000EC
+005BADF4  000000F0		; 0x000000F0
+005BADF8  000000F1		; 0x000000F1
+005BADFC  000000F4		; 0x000000F4
+005BAE00  000000F8		; 0x000000F8
+005BAE04  000000FC		; 0x000000FC
+005BAE08  004B946D		; 0x004B946D
+005BAE0C  004B94D5		; 0x004B94D5
+005BAE10  005BA258		; 0x005BA258
+005BAE14  005BA360		; 0x005BA360
+005BAE18  005BA3F8		; 0x005BA3F8
+
+
+Frame allocation:
+
+	0000       : FB mac_byte_to_bit
+	000C       : VAR mac_bytes
+	000E bit  0: VAR mac_lsb_bits
+	0016 bit  0: VAR mac_msb_bits
+	001E bit  0: VAR I_Enable
+	001F bit  0: VAR I_Fermo
+	0020 bit  0: VAR I_ResetCnt
+	0021 bit  0: VAR I_PreSetCnt
+	0022 bit  0: VAR I_Stato
+	0023 bit  0: VAR bStatoRun
+	0024 bit  0: VAR bAppStatoRun
+	0025 bit  0: VAR bStatoRunOn
+	0026 bit  0: VAR bStatoRunOff
+	0028       : FB StatoRunTON
+	003C       : FB StatoRunTOFF
+	0050 bit  0: VAR I_ProdA
+	0051 bit  0: VAR bCntRTA
+	0052 bit  0: VAR bAppCntRTA
+	0053 bit  0: VAR bCntRTAOn
+	0054 bit  0: VAR bCntRTAOff
+	0058       : FB CntRTATON
+	006C       : FB CntRTATOFF
+	0080 bit  0: VAR I_ProdB
+	0081 bit  0: VAR bCntRTB
+	0082 bit  0: VAR bAppCntRTB
+	0083 bit  0: VAR bCntRTBOn
+	0084 bit  0: VAR bCntRTBOff
+	0088       : FB CntRTBTON
+	009C       : FB CntRTBTOFF
+	00B0 bit  0: VAR OLD_OUT_RUN_STATE_bool
+	00B4       : FB tWarning
+	00C8 bit  0: VAR bChanges
+	00CC       : FB PTrigger
+	00D0       : VAR IN_MACHINE_DT_Word
+	00D2       : VAR IN_FILTER_RUN_STATE_ON_mSec
+	00D4       : VAR IN_FILTER_RUN_STATE_OFF_mSec
+	00D6       : VAR IN_FILTER_CNT_A_ON_mSec
+	00D8       : VAR IN_FILTER_CNT_A_OFF_mSec
+	00DA       : VAR IN_FILTER_CNT_B_ON_mSec
+	00DC       : VAR IN_FILTER_CNT_B_OFF_mSec
+	00DE       : VAR IN_WARNING_DELAY_Sec
+	00E0       : VAR IN_PRESET_CNT_A_dUInt
+	00E4       : VAR IN_PRESET_CNT_B_dUInt
+	00E8       : VAR IN_CNT_A_STEP_UP
+	00EC       : VAR IN_CNT_B_STEP_UP
+	00F0 bit  0: VAR OUT_STROBE_bool
+	00F1 bit  0: VAR OUT_RUN_STATE_bool
+	00F4       : VAR OUT_COUNTER_A_dUInt
+	00F8       : VAR OUT_COUNTER_B_dUInt
+	00FC bit  0: VAR OUT_WARNING_bool
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: $$ElsistInit
+**************************************************
+
+PROGRAM $$ElsistInit
+
+        VAR
+dummy : BOOL;
+	END_VAR
+
+END_PROGRAM
+
+005BAE20  B082     		sub sp, sp, #8
+005BAE22  F8CD E000		str lr, [sp]
+005BAE26  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:$$ElsistInit}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* dummy:=XUnifiedLibInit(TRUE); *)
+#4			LDP0		TRUE	{LNXT:2|2|-1}
+(-) UDINT
+#5			XUnifiedLibInit	{LNXT:2|2|-1}
+(*) UDINT
+005BAE2A  B082     		sub sp, sp, #8
+005BAE2C  2701     		mov r7, #1 ; 1
+005BAE2E  F8CD 7000		str r7, [sp]
+005BAE32  F8DF 401C		ldr r4, [pc, #+28] ; 0x5BA4C0
+005BAE36  F044 0401		orr r4, r4, #1
+005BAE3A  47A0     		blx r4
+005BAE3C  B002     		add sp, sp, #8
+
+#6			ST		dummy	{LNXT:2|2|-1}
+(*) BOOL
+005BAE3E  F8DF 7014		ldr r7, [pc, #+20] ; 0x204159F0
+005BAE42  7038     		strb r0, [r7]
+
+005BAE44  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BAE48  F8DD E000		ldr lr, [sp]
+005BAE4C  B002     		add sp, sp, #8
+
+005BAE4E  4770     		bx lr
+
+005BAE50  005BA4C0		; 0x005BA4C0
+005BAE54  204159F0		; 0x204159F0
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+005BAE58  4770     		bx lr
+
+
+*** OUTPUT:
+005BAE5A  4770     		bx lr
+
+
+
+**************************************************
+	Task Boot init code
+**************************************************
+
+005BAE5C  B082     		sub sp, sp, #8
+005BAE5E  F8CD E000		str lr, [sp]
+005BAE62  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+005BAE66  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BAE6A  F8DD E000		ldr lr, [sp]
+005BAE6E  B002     		add sp, sp, #8
+
+005BAE70  4770     		bx lr
+
+**************************************************
+	List program: MasterProgram
+**************************************************
+
+PROGRAM MasterProgram
+
+        VAR
+mac_word : WORD;
+IBit : ARRAY[0..15] OF BOOL;	{ DE:"Input bits" }
+OByte : ARRAY[0..1] OF BYTE;	{ DE:"Output byte" }
+BCmp : BitToByte;	{ DE:"Bit compress" }
+YCom : ByteToWord;	{ DE:"Byte compress" }
+diff : ULINT;
+	END_VAR
+
+END_PROGRAM
+
+005BAE80  B082     		sub sp, sp, #8
+005BAE82  F8CD E000		str lr, [sp]
+005BAE86  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+#0		{SRC:MasterProgram}
+#1		(*$WAITSWITCH$*)
+#2		
+#3		
+#4			(* IF SysFirstLoop *)
+#5			LD		SysFirstLoop	{LNXT:10|-1|-1}
+(*) UNDEF
+005BAE8A  F8DF 7644		ldr r7, [pc, #+1604] ; 0x20419A81
+005BAE8E  7838     		ldrb r0, [r7]
+
+#6			JMPCN	$label0	{LNXT:10|12|57}
+(-) BOOL
+005BAE90  2800     		cmp r0, #0
+005BAE92  F000 80C2		beq #388 ; 0x005BB01A
+
+
+#7		
+#8			(* THEN *)
+#9		
+#10				(* MF_Machine_2001.IN_FILTER_RUN_STATE_ON_mSec := 500; *)
+#11				MOVE		500,MF_Machine_2001.IN_FILTER_RUN_STATE_ON_mSec	{LNXT:12|13|-1}
+(*) BOOL
+005BAE96  F44F 70FA		mov r0, #500 ; 500
+005BAE9A  F8DF 7584		ldr r7, [pc, #+1412] ; 0x20415AC6
+005BAE9E  8038     		strh r0, [r7]
+
+#12		
+#13				(* MF_Machine_2001.IN_FILTER_RUN_STATE_OFF_mSec := 500; *)
+#14				MOVE		500,MF_Machine_2001.IN_FILTER_RUN_STATE_OFF_mSec	{LNXT:13|14|-1}
+(*) WORD
+005BAEA0  F44F 70FA		mov r0, #500 ; 500
+005BAEA4  F8DF 757C		ldr r7, [pc, #+1404] ; 0x20415AC8
+005BAEA8  8038     		strh r0, [r7]
+
+#15		
+#16				(* MF_Machine_2001.IN_FILTER_CNT_A_ON_mSec     := 10; *)
+#17				MOVE		10,MF_Machine_2001.IN_FILTER_CNT_A_ON_mSec	{LNXT:14|15|-1}
+(*) WORD
+005BAEAA  200A     		mov r0, #10 ; 10
+005BAEAC  F8DF 7578		ldr r7, [pc, #+1400] ; 0x20415ACA
+005BAEB0  8038     		strh r0, [r7]
+
+#18		
+#19				(* MF_Machine_2001.IN_FILTER_CNT_A_OFF_mSec     := 10; *)
+#20				MOVE		10,MF_Machine_2001.IN_FILTER_CNT_A_OFF_mSec	{LNXT:15|16|-1}
+(*) WORD
+005BAEB2  200A     		mov r0, #10 ; 10
+005BAEB4  F8DF 7574		ldr r7, [pc, #+1396] ; 0x20415ACC
+005BAEB8  8038     		strh r0, [r7]
+
+#21		
+#22				(* MF_Machine_2001.IN_FILTER_CNT_B_ON_mSec     := 10; *)
+#23				MOVE		10,MF_Machine_2001.IN_FILTER_CNT_B_ON_mSec	{LNXT:16|17|-1}
+(*) WORD
+005BAEBA  200A     		mov r0, #10 ; 10
+005BAEBC  F8DF 7570		ldr r7, [pc, #+1392] ; 0x20415ACE
+005BAEC0  8038     		strh r0, [r7]
+
+#24		
+#25				(* MF_Machine_2001.IN_FILTER_CNT_B_OFF_mSec     := 10; *)
+#26				MOVE		10,MF_Machine_2001.IN_FILTER_CNT_B_OFF_mSec	{LNXT:17|18|-1}
+(*) WORD
+005BAEC2  200A     		mov r0, #10 ; 10
+005BAEC4  F8DF 756C		ldr r7, [pc, #+1388] ; 0x20415AD0
+005BAEC8  8038     		strh r0, [r7]
+
+#27		
+#28				(* MF_Machine_2001.IN_CNT_A_STEP_UP := 1; *)
+#29				MOVE		1,MF_Machine_2001.IN_CNT_A_STEP_UP	{LNXT:18|19|-1}
+(*) WORD
+005BAECA  2001     		mov r0, #1 ; 1
+005BAECC  F8DF 44FC		ldr r4, [pc, #+1276] ; 0x4B946D
+005BAED0  F044 0401		orr r4, r4, #1
+005BAED4  47A0     		blx r4
+005BAED6  F8DF 756C		ldr r7, [pc, #+1388] ; 0x20415ADC
+005BAEDA  6038     		str r0, [r7]
+
+#30		
+#31				(* MF_Machine_2001.IN_CNT_B_STEP_UP := 1; *)
+#32				MOVE		1,MF_Machine_2001.IN_CNT_B_STEP_UP	{LNXT:19|21|-1}
+(*) REAL
+005BAEDC  2001     		mov r0, #1 ; 1
+005BAEDE  F8DF 44EC		ldr r4, [pc, #+1260] ; 0x4B946D
+005BAEE2  F044 0401		orr r4, r4, #1
+005BAEE6  47A0     		blx r4
+005BAEE8  F8DF 755C		ldr r7, [pc, #+1372] ; 0x20415AE0
+005BAEEC  6038     		str r0, [r7]
+
+#33		
+#34				(* MF_Machine_2001.IN_WARNING_DELAY_Sec     := 180; *)
+#35				MOVE		180,MF_Machine_2001.IN_WARNING_DELAY_Sec	{LNXT:21|22|-1}
+(*) REAL
+005BAEEE  20B4     		mov r0, #180 ; 180
+005BAEF0  F8DF 7544		ldr r7, [pc, #+1348] ; 0x20415AD2
+005BAEF4  8038     		strh r0, [r7]
+
+#36		
+#37				(* bCntReset_2001 := FALSE; *)
+#38				MOVE		FALSE,bCntReset_2001	{LNXT:22|23|-1}
+(*) WORD
+005BAEF6  2000     		mov r0, #0 ; 0
+005BAEF8  F8DF 7510		ldr r7, [pc, #+1296] ; 0x204159F1
+005BAEFC  7038     		strb r0, [r7]
+
+#39		
+#40				(* bCntPause_2001 := FALSE; *)
+#41				MOVE		FALSE,bCntPause_2001	{LNXT:23|24|-1}
+(*) BOOL
+005BAEFE  2000     		mov r0, #0 ; 0
+005BAF00  F8DF 7510		ldr r7, [pc, #+1296] ; 0x204159F3
+005BAF04  7038     		strb r0, [r7]
+
+#42		
+#43				(* bPreSetCnt_2001:= TRUE; *)
+#44				MOVE		TRUE,bPreSetCnt_2001	{LNXT:24|25|-1}
+(*) BOOL
+005BAF06  2001     		mov r0, #1 ; 1
+005BAF08  F8DF 7504		ldr r7, [pc, #+1284] ; 0x204159F2
+005BAF0C  7038     		strb r0, [r7]
+
+#45		
+#46				(* bSetup_2001 := FALSE; *)
+#47				MOVE		FALSE,bSetup_2001	{LNXT:25|27|-1}
+(*) BOOL
+005BAF0E  2000     		mov r0, #0 ; 0
+005BAF10  F8DF 7548		ldr r7, [pc, #+1352] ; 0x20415AF4
+005BAF14  7038     		strb r0, [r7]
+
+#48		
+#49				(* sPartProgram_2001 := 'INITSEQUENCE'; *)
+#50				MOVE		'INITSEQUENCE',sPartProgram_2001	{LNXT:27|28|-1}
+(*) BOOL
+005BAF16  F8DF 74C8		ldr r7, [pc, #+1224] ; 0x5BA0A4
+005BAF1A  4638     		mov r0, r7
+005BAF1C  B082     		sub sp, sp, #8
+005BAF1E  F8CD 0000		str r0, [sp]
+005BAF22  E92D 0006		stmdb sp!, { r1, r2 }
+005BAF26  2221     		mov r2, #33 ; 33
+005BAF28  F8DF 1534		ldr r1, [pc, #+1332] ; 0x20415AF5
+005BAF2C  F8DF 44AC		ldr r4, [pc, #+1196] ; 0x4BA059
+005BAF30  F044 0401		orr r4, r4, #1
+005BAF34  47A0     		blx r4
+005BAF36  E8BD 0006		ldmia sp!, { r1, r2 }
+005BAF3A  F8DD 0000		ldr r0, [sp]
+005BAF3E  B002     		add sp, sp, #8
+
+#51		
+#52				(* sProductionRequest_2001 := ''; *)
+#53				MOVE		'',sProductionRequest_2001	{LNXT:28|30|-1}
+(*) STRING
+005BAF40  F8DF 74A0		ldr r7, [pc, #+1184] ; 0x5BA0B2
+005BAF44  4638     		mov r0, r7
+005BAF46  B082     		sub sp, sp, #8
+005BAF48  F8CD 0000		str r0, [sp]
+005BAF4C  E92D 0006		stmdb sp!, { r1, r2 }
+005BAF50  2221     		mov r2, #33 ; 33
+005BAF52  F8DF 1510		ldr r1, [pc, #+1296] ; 0x20415B16
+005BAF56  F8DF 4484		ldr r4, [pc, #+1156] ; 0x4BA059
+005BAF5A  F044 0401		orr r4, r4, #1
+005BAF5E  47A0     		blx r4
+005BAF60  E8BD 0006		ldmia sp!, { r1, r2 }
+005BAF64  F8DD 0000		ldr r0, [sp]
+005BAF68  B002     		add sp, sp, #8
+
+#54		
+#55				(* sSegmentRequirement_2001 := ''; *)
+#56				MOVE		'',sSegmentRequirement_2001	{LNXT:30|31|-1}
+(*) STRING
+005BAF6A  F8DF 7478		ldr r7, [pc, #+1144] ; 0x5BA0B2
+005BAF6E  4638     		mov r0, r7
+005BAF70  B082     		sub sp, sp, #8
+005BAF72  F8CD 0000		str r0, [sp]
+005BAF76  E92D 0006		stmdb sp!, { r1, r2 }
+005BAF7A  2221     		mov r2, #33 ; 33
+005BAF7C  F8DF 14E8		ldr r1, [pc, #+1256] ; 0x20415B37
+005BAF80  F8DF 4458		ldr r4, [pc, #+1112] ; 0x4BA059
+005BAF84  F044 0401		orr r4, r4, #1
+005BAF88  47A0     		blx r4
+005BAF8A  E8BD 0006		ldmia sp!, { r1, r2 }
+005BAF8E  F8DD 0000		ldr r0, [sp]
+005BAF92  B002     		add sp, sp, #8
+
+#57		
+#58				(* sMaterialDefinition_2001 := ''; *)
+#59				MOVE		'',sMaterialDefinition_2001	{LNXT:31|32|-1}
+(*) STRING
+005BAF94  F8DF 744C		ldr r7, [pc, #+1100] ; 0x5BA0B2
+005BAF98  4638     		mov r0, r7
+005BAF9A  B082     		sub sp, sp, #8
+005BAF9C  F8CD 0000		str r0, [sp]
+005BAFA0  E92D 0006		stmdb sp!, { r1, r2 }
+005BAFA4  2221     		mov r2, #33 ; 33
+005BAFA6  F8DF 14C4		ldr r1, [pc, #+1220] ; 0x20415B58
+005BAFAA  F8DF 4430		ldr r4, [pc, #+1072] ; 0x4BA059
+005BAFAE  F044 0401		orr r4, r4, #1
+005BAFB2  47A0     		blx r4
+005BAFB4  E8BD 0006		ldmia sp!, { r1, r2 }
+005BAFB8  F8DD 0000		ldr r0, [sp]
+005BAFBC  B002     		add sp, sp, #8
+
+#60		
+#61				(* SampleTime_2001 := (SysDateGetNs() / 1000000); *)
+#62				SysDateGetNs	{LNXT:32|33|-1}
+(*) STRING
+005BAFBE  F8DF 4404		ldr r4, [pc, #+1028] ; 0x4A2105
+005BAFC2  F044 0401		orr r4, r4, #1
+005BAFC6  47A0     		blx r4
+
+#63				DIV		1000000	{LNXT:32|33|-1}
+(*) ULINT
+005BAFC8  F8DF 73F4		ldr r7, [pc, #+1012] ; 0xF4240
+005BAFCC  463F     		mov r7, r7
+005BAFCE  46B9     		mov r9, r7
+005BAFD0  F04F 0A00		mov r10, #0
+005BAFD4  464A     		mov r2, r9
+005BAFD6  4653     		mov r3, r10
+005BAFD8  F8DF 43EC		ldr r4, [pc, #+1004] ; 0x4B933D
+005BAFDC  F044 0401		orr r4, r4, #1
+005BAFE0  47A0     		blx r4
+
+#64				ST		SampleTime_2001	{LNXT:32|33|-1}
+(*) ULINT
+005BAFE2  F8DF 7498		ldr r7, [pc, #+1176] ; 0x20415B7C
+005BAFE6  E92D 0180		stmdb sp!, { r7, r8 }
+005BAFEA  463F     		mov r7, r7
+005BAFEC  C703     		stm _TMP!, {_PAR0, _PAR1}
+005BAFEE  E8BD 0180		ldmia sp!, { r7, r8 }
+
+#65		
+#66				(* SampleTimeTrBool_2001 := FALSE; *)
+#67				MOVE		FALSE,SampleTimeTrBool_2001	{LNXT:33|34|-1}
+(*) ULINT
+005BAFF2  2000     		mov r0, #0 ; 0
+005BAFF4  F8DF 7478		ldr r7, [pc, #+1144] ; 0x20415B79
+005BAFF8  7038     		strb r0, [r7]
+
+#68		
+#69				(* dMacRatePpm_2001 := 0.0; *)
+#70				MOVE		0.0,dMacRatePpm_2001	{LNXT:34|35|-1}
+(*) BOOL
+005BAFFA  F8DF 73EC		ldr r7, [pc, #+1004] ; 0x5BA0B4
+005BAFFE  6838     		ldr r0, [r7]
+005BB000  F8DF 747C		ldr r7, [pc, #+1148] ; 0x20415B84
+005BB004  6038     		str r0, [r7]
+
+#71		
+#72				(* OLD_COUNTER_2001 := dCntRT_2001; *)
+#73				MOVE		dCntRT_2001,OLD_COUNTER_2001	{LNXT:35|36|-1}
+(*) REAL
+005BB006  F8DF 73F8		ldr r7, [pc, #+1016] ; 0x204155F8
+005BB00A  6838     		ldr r0, [r7]
+005BB00C  F8DF 7474		ldr r7, [pc, #+1140] ; 0x20415B88
+005BB010  6038     		str r0, [r7]
+
+#74		
+#75				(* bLastMsg_2001 := FALSE; *)
+#76				MOVE		FALSE,bLastMsg_2001	{LNXT:36|57|-1}
+(*) REAL
+005BB012  2000     		mov r0, #0 ; 0
+005BB014  F8DF 7460		ldr r7, [pc, #+1120] ; 0x20415B7B
+005BB018  7038     		strb r0, [r7]
+
+#77		
+#78		$label0:
+#79			(* END_IF *)
+#80		
+#81			(* BCmp.b0:=TRUE; *)
+#82			MOVE		TRUE,BCmp.b0	{LNXT:57|58|-1}
+(*) BOOL
+005BB01A  2001     		mov r0, #1 ; 1
+005BB01C  F8DF 7468		ldr r7, [pc, #+1128] ; 0x20415B8C
+005BB020  7038     		strb r0, [r7]
+
+#83		
+#84			(* BCmp.b1:=(bCntPause_2001 OR bSetup_2001); *)
+#85			LD		bCntPause_2001	{LNXT:58|59|-1}
+(*) UNDEF
+005BB022  F8DF 73F0		ldr r7, [pc, #+1008] ; 0x204159F3
+005BB026  7838     		ldrb r0, [r7]
+
+#86			OR		bSetup_2001	{LNXT:58|59|-1}
+(*) BOOL
+005BB028  F8DF 7430		ldr r7, [pc, #+1072] ; 0x20415AF4
+005BB02C  783F     		ldrb r7, [r7]
+005BB02E  4338     		orr r0, r0, r7
+
+#87			ST		BCmp.b1	{LNXT:58|59|-1}
+(*) BOOL
+005BB030  F8DF 7458		ldr r7, [pc, #+1112] ; 0x20415B8D
+005BB034  7038     		strb r0, [r7]
+
+#88		
+#89			(* BCmp.b2:=bCntReset_2001; *)
+#90			MOVE		bCntReset_2001,BCmp.b2	{LNXT:59|60|-1}
+(*) BOOL
+005BB036  F8DF 73D4		ldr r7, [pc, #+980] ; 0x204159F1
+005BB03A  7838     		ldrb r0, [r7]
+005BB03C  F8DF 7450		ldr r7, [pc, #+1104] ; 0x20415B8E
+005BB040  7038     		strb r0, [r7]
+
+#91		
+#92			(* BCmp.b3:=bPreSetCnt_2001; *)
+#93			MOVE		bPreSetCnt_2001,BCmp.b3	{LNXT:60|61|-1}
+(*) BOOL
+005BB042  F8DF 73CC		ldr r7, [pc, #+972] ; 0x204159F2
+005BB046  7838     		ldrb r0, [r7]
+005BB048  F8DF 7448		ldr r7, [pc, #+1096] ; 0x20415B8F
+005BB04C  7038     		strb r0, [r7]
+
+#94		
+#95			(* BCmp.b4:=FALSE; *)
+#96			MOVE		FALSE,BCmp.b4	{LNXT:61|62|-1}
+(*) BOOL
+005BB04E  2000     		mov r0, #0 ; 0
+005BB050  F8DF 7444		ldr r7, [pc, #+1092] ; 0x20415B90
+005BB054  7038     		strb r0, [r7]
+
+#97		
+#98			(* BCmp.b5:=FALSE; *)
+#99			MOVE		FALSE,BCmp.b5	{LNXT:62|63|-1}
+(*) BOOL
+005BB056  2000     		mov r0, #0 ; 0
+005BB058  F8DF 7440		ldr r7, [pc, #+1088] ; 0x20415B91
+005BB05C  7038     		strb r0, [r7]
+
+#100		
+#101			(* BCmp.b6:=FALSE; *)
+#102			MOVE		FALSE,BCmp.b6	{LNXT:63|64|-1}
+(*) BOOL
+005BB05E  2000     		mov r0, #0 ; 0
+005BB060  F8DF 743C		ldr r7, [pc, #+1084] ; 0x20415B92
+005BB064  7038     		strb r0, [r7]
+
+#103		
+#104			(* BCmp.b7:=FALSE; *)
+#105			MOVE		FALSE,BCmp.b7	{LNXT:64|65|-1}
+(*) BOOL
+005BB066  2000     		mov r0, #0 ; 0
+005BB068  F8DF 7438		ldr r7, [pc, #+1080] ; 0x20415B93
+005BB06C  7038     		strb r0, [r7]
+
+#106		
+#107			(* BCmp *)
+#108			CAL		BCmp	{LNXT:65|66|-1}
+(*) BOOL
+005BB06E  E92D 0021		stmdb sp!, { r0, r5 }
+005BB072  F8DF 5414		ldr r5, [pc, #+1044] ; 0x20415B8C
+005BB076  F8DF 437C		ldr r4, [pc, #+892] ; 0x5BA148
+005BB07A  F044 0401		orr r4, r4, #1
+005BB07E  47A0     		blx r4
+005BB080  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#109		
+#110			(* OByte[0]:=BCmp.Out; *)
+#111			MOVE		BCmp.Out,OByte[0]	{LNXT:66|69|-1}
+(*) BOOL
+005BB084  F8DF 7420		ldr r7, [pc, #+1056] ; 0x20415B94
+005BB088  7838     		ldrb r0, [r7]
+005BB08A  F8DF 7420		ldr r7, [pc, #+1056] ; 0x20415B98
+005BB08E  7038     		strb r0, [r7]
+
+#112		
+#113			(* BCmp.b0:=(NOT I_STATO_2001); *)
+#114			LD		I_STATO_2001	{LNXT:69|70|-1}
+(*) UNDEF
+005BB090  F8DF 7444		ldr r7, [pc, #+1092] ; 0x2041AFC1
+005BB094  7838     		ldrb r0, [r7]
+
+#115			NOT	{LNXT:69|70|-1}
+(*) BOOL
+005BB096  2800     		cmp r0, #0
+005BB098  BF08 2001		eqmov r0, #1
+005BB09C  BF18 2000		nemov r0, #0
+
+#116			ST		BCmp.b0	{LNXT:69|70|-1}
+(*) BOOL
+005BB0A0  F8DF 73E4		ldr r7, [pc, #+996] ; 0x20415B8C
+005BB0A4  7038     		strb r0, [r7]
+
+#117		
+#118			(* BCmp.b1:=I_CONTA_2001; *)
+#119			MOVE		I_CONTA_2001,BCmp.b1	{LNXT:70|71|-1}
+(*) BOOL
+005BB0A6  F8DF 742C		ldr r7, [pc, #+1068] ; 0x2041AFC0
+005BB0AA  7838     		ldrb r0, [r7]
+005BB0AC  F8DF 73DC		ldr r7, [pc, #+988] ; 0x20415B8D
+005BB0B0  7038     		strb r0, [r7]
+
+#120		
+#121			(* BCmp.b2:=FALSE; *)
+#122			MOVE		FALSE,BCmp.b2	{LNXT:71|72|-1}
+(*) BOOL
+005BB0B2  2000     		mov r0, #0 ; 0
+005BB0B4  F8DF 73D8		ldr r7, [pc, #+984] ; 0x20415B8E
+005BB0B8  7038     		strb r0, [r7]
+
+#123		
+#124			(* BCmp.b3:=FALSE; *)
+#125			MOVE		FALSE,BCmp.b3	{LNXT:72|73|-1}
+(*) BOOL
+005BB0BA  2000     		mov r0, #0 ; 0
+005BB0BC  F8DF 73D4		ldr r7, [pc, #+980] ; 0x20415B8F
+005BB0C0  7038     		strb r0, [r7]
+
+#126		
+#127			(* BCmp.b4:=FALSE; *)
+#128			MOVE		FALSE,BCmp.b4	{LNXT:73|74|-1}
+(*) BOOL
+005BB0C2  2000     		mov r0, #0 ; 0
+005BB0C4  F8DF 73D0		ldr r7, [pc, #+976] ; 0x20415B90
+005BB0C8  7038     		strb r0, [r7]
+
+#129		
+#130			(* BCmp.b5:=FALSE; *)
+#131			MOVE		FALSE,BCmp.b5	{LNXT:74|75|-1}
+(*) BOOL
+005BB0CA  2000     		mov r0, #0 ; 0
+005BB0CC  F8DF 73CC		ldr r7, [pc, #+972] ; 0x20415B91
+005BB0D0  7038     		strb r0, [r7]
+
+#132		
+#133			(* BCmp.b6:=FALSE; *)
+#134			MOVE		FALSE,BCmp.b6	{LNXT:75|76|-1}
+(*) BOOL
+005BB0D2  2000     		mov r0, #0 ; 0
+005BB0D4  F8DF 73C8		ldr r7, [pc, #+968] ; 0x20415B92
+005BB0D8  7038     		strb r0, [r7]
+
+#135		
+#136			(* BCmp.b7:=FALSE; *)
+#137			MOVE		FALSE,BCmp.b7	{LNXT:76|77|-1}
+(*) BOOL
+005BB0DA  2000     		mov r0, #0 ; 0
+005BB0DC  F8DF 73C4		ldr r7, [pc, #+964] ; 0x20415B93
+005BB0E0  7038     		strb r0, [r7]
+
+#138		
+#139			(* BCmp *)
+#140			CAL		BCmp	{LNXT:77|78|-1}
+(*) BOOL
+005BB0E2  E92D 0021		stmdb sp!, { r0, r5 }
+005BB0E6  F8DF 53A0		ldr r5, [pc, #+928] ; 0x20415B8C
+005BB0EA  F8DF 4308		ldr r4, [pc, #+776] ; 0x5BA148
+005BB0EE  F044 0401		orr r4, r4, #1
+005BB0F2  47A0     		blx r4
+005BB0F4  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#141		
+#142			(* OByte[1]:=BCmp.Out; *)
+#143			MOVE		BCmp.Out,OByte[1]	{LNXT:78|80|-1}
+(*) BOOL
+005BB0F8  F8DF 73AC		ldr r7, [pc, #+940] ; 0x20415B94
+005BB0FC  7838     		ldrb r0, [r7]
+005BB0FE  F8DF 73B0		ldr r7, [pc, #+944] ; 0x20415B99
+005BB102  7038     		strb r0, [r7]
+
+#144		
+#145			(* YCom *)
+#146			MOVE		OByte[1],YCom.MSB	{LNXT:80|-1|-1}
+(*) BYTE
+005BB104  F8DF 73A8		ldr r7, [pc, #+936] ; 0x20415B99
+005BB108  7838     		ldrb r0, [r7]
+005BB10A  F8DF 73AC		ldr r7, [pc, #+940] ; 0x20415B9C
+005BB10E  7038     		strb r0, [r7]
+
+#147			MOVE		OByte[0],YCom.LSB	{LNXT:80|-1|-1}
+(*) BYTE
+005BB110  F8DF 7398		ldr r7, [pc, #+920] ; 0x20415B98
+005BB114  7838     		ldrb r0, [r7]
+005BB116  F8DF 73A4		ldr r7, [pc, #+932] ; 0x20415B9D
+005BB11A  7038     		strb r0, [r7]
+
+#148			CAL		YCom	{LNXT:80|81|-1}
+(*) BYTE
+005BB11C  E92D 0021		stmdb sp!, { r0, r5 }
+005BB120  F8DF 5394		ldr r5, [pc, #+916] ; 0x20415B9C
+005BB124  F8DF 42D0		ldr r4, [pc, #+720] ; 0x5BA334
+005BB128  F044 0401		orr r4, r4, #1
+005BB12C  47A0     		blx r4
+005BB12E  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#149		
+#150			(* mac_word:=YCom.Out; *)
+#151			MOVE		YCom.Out,mac_word	{LNXT:81|83|-1}
+(*) BYTE
+005BB132  F8DF 738C		ldr r7, [pc, #+908] ; 0x20415B9E
+005BB136  8838     		ldrh r0, [r7]
+005BB138  F8DF 7378		ldr r7, [pc, #+888] ; 0x20415B9A
+005BB13C  8038     		strh r0, [r7]
+
+#152		
+#153			(* MF_Machine_2001.IN_MACHINE_DT_Word       := mac_word; *)
+#154			MOVE		mac_word,MF_Machine_2001.IN_MACHINE_DT_Word	{LNXT:83|84|-1}
+(*) WORD
+005BB13E  F8DF 7374		ldr r7, [pc, #+884] ; 0x20415B9A
+005BB142  8838     		ldrh r0, [r7]
+005BB144  F8DF 72D4		ldr r7, [pc, #+724] ; 0x20415AC4
+005BB148  8038     		strh r0, [r7]
+
+#155		
+#156			(* MF_Machine_2001.IN_PRESET_CNT_A_dUInt    := dCntRT_2001; *)
+#157			MOVE		dCntRT_2001,MF_Machine_2001.IN_PRESET_CNT_A_dUInt	{LNXT:84|85|-1}
+(*) WORD
+005BB14A  F8DF 72B4		ldr r7, [pc, #+692] ; 0x204155F8
+005BB14E  6838     		ldr r0, [r7]
+005BB150  F8DF 72E8		ldr r7, [pc, #+744] ; 0x20415AD4
+005BB154  6038     		str r0, [r7]
+
+#158		
+#159			(* MF_Machine_2001.IN_PRESET_CNT_B_dUInt    := dCntSC_2001; *)
+#160			MOVE		dCntSC_2001,MF_Machine_2001.IN_PRESET_CNT_B_dUInt	{LNXT:85|86|-1}
+(*) REAL
+005BB156  F8DF 72AC		ldr r7, [pc, #+684] ; 0x204155FC
+005BB15A  6838     		ldr r0, [r7]
+005BB15C  F8DF 72E0		ldr r7, [pc, #+736] ; 0x20415AD8
+005BB160  6038     		str r0, [r7]
+
+#161		
+#162			(* MF_Machine_2001 *)
+#163			CAL		MF_Machine_2001	{LNXT:86|88|-1}
+(*) REAL
+005BB162  E92D 0021		stmdb sp!, { r0, r5 }
+005BB166  F8DF 52B0		ldr r5, [pc, #+688] ; 0x204159F4
+005BB16A  F8DF 4290		ldr r4, [pc, #+656] ; 0x5BA638
+005BB16E  F044 0401		orr r4, r4, #1
+005BB172  47A0     		blx r4
+005BB174  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#164		
+#165			(* dCntRT_2001           := MF_Machine_2001.OUT_COUNTER_A_dUInt; *)
+#166			MOVE		MF_Machine_2001.OUT_COUNTER_A_dUInt,dCntRT_2001	{LNXT:88|89|-1}
+(*) REAL
+005BB178  F8DF 72D8		ldr r7, [pc, #+728] ; 0x20415AE8
+005BB17C  6838     		ldr r0, [r7]
+005BB17E  F8DF 7280		ldr r7, [pc, #+640] ; 0x204155F8
+005BB182  6038     		str r0, [r7]
+
+#167		
+#168			(* RUN_STATE_bool_2001   := MF_Machine_2001.OUT_RUN_STATE_bool; *)
+#169			MOVE		MF_Machine_2001.OUT_RUN_STATE_bool,RUN_STATE_bool_2001	{LNXT:89|90|-1}
+(*) REAL
+005BB184  F8DF 72C8		ldr r7, [pc, #+712] ; 0x20415AE5
+005BB188  7838     		ldrb r0, [r7]
+005BB18A  F8DF 72E8		ldr r7, [pc, #+744] ; 0x20415B7A
+005BB18E  7038     		strb r0, [r7]
+
+#170		
+#171			(* STROBE_bool_2001      := MF_Machine_2001.OUT_STROBE_bool; *)
+#172			MOVE		MF_Machine_2001.OUT_STROBE_bool,STROBE_bool_2001	{LNXT:90|91|-1}
+(*) BOOL
+005BB190  F8DF 72B8		ldr r7, [pc, #+696] ; 0x20415AE4
+005BB194  7838     		ldrb r0, [r7]
+005BB196  F8DF 732C		ldr r7, [pc, #+812] ; 0x20415BA0
+005BB19A  7038     		strb r0, [r7]
+
+#173		
+#174			(* WARNING_2001          := MF_Machine_2001.OUT_WARNING_bool; *)
+#175			MOVE		MF_Machine_2001.OUT_WARNING_bool,WARNING_2001	{LNXT:91|93|-1}
+(*) BOOL
+005BB19C  F8DF 72B8		ldr r7, [pc, #+696] ; 0x20415AF0
+005BB1A0  7838     		ldrb r0, [r7]
+005BB1A2  F8DF 7324		ldr r7, [pc, #+804] ; 0x20415BA1
+005BB1A6  7038     		strb r0, [r7]
+
+#176		
+#177		
+#178			(* IF bCntReset_2001 *)
+#179			LD		bCntReset_2001	{LNXT:93|-1|-1}
+(*) UNDEF
+005BB1A8  F8DF 7260		ldr r7, [pc, #+608] ; 0x204159F1
+005BB1AC  7838     		ldrb r0, [r7]
+
+#180			JMPCN	$label1	{LNXT:93|93|94}
+(-) BOOL
+005BB1AE  2800     		cmp r0, #0
+005BB1B0  D006     		beq #12 ; 0x005BB1C0
+
+
+#181		
+#182			(* THEN *)
+#183		
+#184				(* OLD_COUNTER_2001 := dCntRT_2001; *)
+#185				MOVE		dCntRT_2001,OLD_COUNTER_2001	{LNXT:93|94|-1}
+(*) BOOL
+005BB1B4  F8DF 7248		ldr r7, [pc, #+584] ; 0x204155F8
+005BB1B8  6838     		ldr r0, [r7]
+005BB1BA  F8DF 72C8		ldr r7, [pc, #+712] ; 0x20415B88
+005BB1BE  6038     		str r0, [r7]
+
+#186		
+#187		$label1:
+#188			(* END_IF *)
+#189		
+#190		
+#191			(* IF bCntPause_2001 *)
+#192			LD		bCntPause_2001	{LNXT:94|-1|-1}
+(*) UNDEF
+005BB1C0  F8DF 7250		ldr r7, [pc, #+592] ; 0x204159F3
+005BB1C4  7838     		ldrb r0, [r7]
+
+#193			NOT	{LNXT:94|-1|-1}
+(*) BOOL
+005BB1C6  2800     		cmp r0, #0
+005BB1C8  BF08 2001		eqmov r0, #1
+005BB1CC  BF18 2000		nemov r0, #0
+
+#194			JMPCN	$label2	{LNXT:94|96|109}
+(-) BOOL
+005BB1D0  2800     		cmp r0, #0
+005BB1D2  F000 80AF		beq #350 ; 0x005BB334
+
+
+#195		
+#196			(* THEN *)
+#197		
+#198		
+#199				(* IF dCntRT_2001 <> OLD_COUNTER_2001 *)
+#200				LD		dCntRT_2001	{LNXT:96|-1|-1}
+(*) UNDEF
+005BB1D6  F8DF 7228		ldr r7, [pc, #+552] ; 0x204155F8
+005BB1DA  6838     		ldr r0, [r7]
+
+#201				NE		OLD_COUNTER_2001	{LNXT:96|-1|-1}
+(*) REAL
+005BB1DC  B082     		sub sp, sp, #8
+005BB1DE  F8CD 1000		str r1, [sp]
+005BB1E2  F8DF 72A0		ldr r7, [pc, #+672] ; 0x20415B88
+005BB1E6  6839     		ldr r1, [r7]
+005BB1E8  F8DF 41EC		ldr r4, [pc, #+492] ; 0x4B9595
+005BB1EC  F044 0401		orr r4, r4, #1
+005BB1F0  47A0     		blx r4
+005BB1F2  F8DD 1000		ldr r1, [sp]
+005BB1F6  B002     		add sp, sp, #8
+
+#202				JMPCN	$label4	{LNXT:96|97|102}
+(-) BOOL
+005BB1F8  2800     		cmp r0, #0
+005BB1FA  D070     		beq #224 ; 0x005BB2DE
+
+
+#203		
+#204				(* THEN *)
+#205		
+#206					(* diff := ((SysDateGetNs() / 1000000) - SampleTime_2001); *)
+#207					SysDateGetNs	{LNXT:97|98|-1}
+(*) BOOL
+005BB1FE  F8DF 41C4		ldr r4, [pc, #+452] ; 0x4A2105
+005BB202  F044 0401		orr r4, r4, #1
+005BB206  47A0     		blx r4
+
+#208					DIV		1000000	{LNXT:97|98|-1}
+(*) ULINT
+005BB208  F8DF 71B4		ldr r7, [pc, #+436] ; 0xF4240
+005BB20C  463F     		mov r7, r7
+005BB20E  46B9     		mov r9, r7
+005BB210  F04F 0A00		mov r10, #0
+005BB214  464A     		mov r2, r9
+005BB216  4653     		mov r3, r10
+005BB218  F8DF 41AC		ldr r4, [pc, #+428] ; 0x4B933D
+005BB21C  F044 0401		orr r4, r4, #1
+005BB220  47A0     		blx r4
+
+#209					SUB		SampleTime_2001	{LNXT:97|98|-1}
+(*) ULINT
+005BB222  F8DF 7258		ldr r7, [pc, #+600] ; 0x20415B7C
+005BB226  F8D7 9000		ldr r9, [r7]
+005BB22A  F8D7 A004		ldr r10, [r7, #4]
+005BB22E  464F     		mov r7, r9
+005BB230  1BC0     		sub r0, r0, r7
+005BB232  4657     		mov r7, r10
+005BB234  41B9     		sbc r1, r7
+
+#210					ST		diff	{LNXT:97|98|-1}
+(*) ULINT
+005BB236  F8DF 7294		ldr r7, [pc, #+660] ; 0x20415BA4
+005BB23A  E92D 0180		stmdb sp!, { r7, r8 }
+005BB23E  463F     		mov r7, r7
+005BB240  C703     		stm _TMP!, {_PAR0, _PAR1}
+005BB242  E8BD 0180		ldmia sp!, { r7, r8 }
+
+#211		
+#212					(* dMacRatePpm_2001 := (TO_REAL(60.0 / TO_REAL(diff / 1000.0))) * MF_Machine_2001.IN_CNT_A_STEP_UP; *)
+#213					LD		60.0	{LNXT:98|99|-1}
+(*) UNDEF
+005BB246  F8DF 71A4		ldr r7, [pc, #+420] ; 0x5BA0B8
+005BB24A  6838     		ldr r0, [r7]
+
+#214					DIV(		diff	{LNXT:98|99|-1}
+(*) REAL
+005BB24C  B082     		sub sp, sp, #8
+005BB24E  F8CD 0000		str r0, [sp]
+005BB252  F8DF 7278		ldr r7, [pc, #+632] ; 0x20415BA4
+005BB256  6838     		ldr r0, [r7]
+005BB258  6879     		ldr r1, [r7, #4]
+
+#215					DIV		1000.0	{LNXT:98|99|-1}
+(*) ULINT
+005BB25A  F8DF 4170		ldr r4, [pc, #+368] ; 0x4B946D
+005BB25E  F044 0401		orr r4, r4, #1
+005BB262  47A0     		blx r4
+005BB264  F8DF 7188		ldr r7, [pc, #+392] ; 0x5BA0BC
+005BB268  683F     		ldr r7, [r7]
+005BB26A  B082     		sub sp, sp, #8
+005BB26C  F8CD 1000		str r1, [sp]
+005BB270  4639     		mov r1, r7
+005BB272  F8DF 4160		ldr r4, [pc, #+352] ; 0x4B950B
+005BB276  F044 0401		orr r4, r4, #1
+005BB27A  47A0     		blx r4
+005BB27C  F8DD 1000		ldr r1, [sp]
+005BB280  B002     		add sp, sp, #8
+
+#216					TO_REAL	{LNXT:98|99|-1}
+(-) REAL
+#217					)	{LNXT:98|99|-1}
+(*) REAL
+005BB282  4607     		mov r7, r0
+005BB284  F8DD 0000		ldr r0, [sp]
+005BB288  B002     		add sp, sp, #8
+005BB28A  B082     		sub sp, sp, #8
+005BB28C  F8CD 1000		str r1, [sp]
+005BB290  4639     		mov r1, r7
+005BB292  F8DF 4140		ldr r4, [pc, #+320] ; 0x4B950B
+005BB296  F044 0401		orr r4, r4, #1
+005BB29A  47A0     		blx r4
+005BB29C  F8DD 1000		ldr r1, [sp]
+005BB2A0  B002     		add sp, sp, #8
+
+#218					TO_REAL	{LNXT:98|99|-1}
+(-) REAL
+#219					MUL		MF_Machine_2001.IN_CNT_A_STEP_UP	{LNXT:98|99|-1}
+(*) REAL
+005BB2A2  F8DF 71A0		ldr r7, [pc, #+416] ; 0x20415ADC
+005BB2A6  683F     		ldr r7, [r7]
+005BB2A8  B082     		sub sp, sp, #8
+005BB2AA  F8CD 1000		str r1, [sp]
+005BB2AE  4639     		mov r1, r7
+005BB2B0  F8DF 411C		ldr r4, [pc, #+284] ; 0x4B94F9
+005BB2B4  F044 0401		orr r4, r4, #1
+005BB2B8  47A0     		blx r4
+005BB2BA  F8DD 1000		ldr r1, [sp]
+005BB2BE  B002     		add sp, sp, #8
+
+#220					ST		dMacRatePpm_2001	{LNXT:98|99|-1}
+(*) REAL
+005BB2C0  F8DF 71BC		ldr r7, [pc, #+444] ; 0x20415B84
+005BB2C4  6038     		str r0, [r7]
+
+#221		
+#222					(* OLD_COUNTER_2001 := dCntRT_2001; *)
+#223					MOVE		dCntRT_2001,OLD_COUNTER_2001	{LNXT:99|100|-1}
+(*) REAL
+005BB2C6  F8DF 7138		ldr r7, [pc, #+312] ; 0x204155F8
+005BB2CA  6838     		ldr r0, [r7]
+005BB2CC  F8DF 71B4		ldr r7, [pc, #+436] ; 0x20415B88
+005BB2D0  6038     		str r0, [r7]
+
+#224		
+#225					(* SampleTimeTrBool_2001 := FALSE; *)
+#226					MOVE		FALSE,SampleTimeTrBool_2001	{LNXT:100|113|-1}
+(*) REAL
+005BB2D2  2000     		mov r0, #0 ; 0
+005BB2D4  F8DF 7198		ldr r7, [pc, #+408] ; 0x20415B79
+005BB2D8  7038     		strb r0, [r7]
+
+#227					JMP		$label5	{LNXT:96|97|102}
+(-) BOOL
+005BB2DA  E029     		b #82 ; 0x005BB330
+
+
+#228		$label4:
+#229		
+#230				(* ELSE *)
+#231		
+#232		
+#233					(* IF SampleTimeTrBool_2001 *)
+#234					LD		SampleTimeTrBool_2001	{LNXT:102|-1|-1}
+(*) UNDEF
+005BB2DE  F8DF 7190		ldr r7, [pc, #+400] ; 0x20415B79
+005BB2E2  7838     		ldrb r0, [r7]
+
+#235					NOT	{LNXT:102|-1|-1}
+(*) BOOL
+005BB2E4  2800     		cmp r0, #0
+005BB2E6  BF08 2001		eqmov r0, #1
+005BB2EA  BF18 2000		nemov r0, #0
+
+#236					JMPCN	$label6	{LNXT:102|103|113}
+(-) BOOL
+005BB2EE  2800     		cmp r0, #0
+005BB2F0  D01E     		beq #60 ; 0x005BB330
+
+
+#237		
+#238					(* THEN *)
+#239		
+#240						(* SampleTime_2001 := (SysDateGetNs() / 1000000); *)
+#241						SysDateGetNs	{LNXT:103|104|-1}
+(*) BOOL
+005BB2F4  F8DF 40CC		ldr r4, [pc, #+204] ; 0x4A2105
+005BB2F8  F044 0401		orr r4, r4, #1
+005BB2FC  47A0     		blx r4
+
+#242						DIV		1000000	{LNXT:103|104|-1}
+(*) ULINT
+005BB2FE  F8DF 70C0		ldr r7, [pc, #+192] ; 0xF4240
+005BB302  463F     		mov r7, r7
+005BB304  46B9     		mov r9, r7
+005BB306  F04F 0A00		mov r10, #0
+005BB30A  464A     		mov r2, r9
+005BB30C  4653     		mov r3, r10
+005BB30E  F8DF 40B8		ldr r4, [pc, #+184] ; 0x4B933D
+005BB312  F044 0401		orr r4, r4, #1
+005BB316  47A0     		blx r4
+
+#243						ST		SampleTime_2001	{LNXT:103|104|-1}
+(*) ULINT
+005BB318  F8DF 7160		ldr r7, [pc, #+352] ; 0x20415B7C
+005BB31C  E92D 0180		stmdb sp!, { r7, r8 }
+005BB320  463F     		mov r7, r7
+005BB322  C703     		stm _TMP!, {_PAR0, _PAR1}
+005BB324  E8BD 0180		ldmia sp!, { r7, r8 }
+
+#244		
+#245						(* SampleTimeTrBool_2001 := TRUE; *)
+#246						MOVE		TRUE,SampleTimeTrBool_2001	{LNXT:104|113|-1}
+(*) ULINT
+005BB328  2001     		mov r0, #1 ; 1
+005BB32A  F8DF 7144		ldr r7, [pc, #+324] ; 0x20415B79
+005BB32E  7038     		strb r0, [r7]
+
+#247		
+#248		$label6:
+#249					(* END_IF *)
+#250		
+#251		$label5:
+#252				(* END_IF *)
+#253				JMP		$label3	{LNXT:94|96|109}
+(-) BOOL
+005BB330  E026     		b #76 ; 0x005BB380
+
+
+#254		$label2:
+#255		
+#256			(* ELSE *)
+#257		
+#258				(* dMacRatePpm_2001 := 0.0; *)
+#259				MOVE		0.0,dMacRatePpm_2001	{LNXT:109|110|-1}
+(*) BOOL
+005BB334  F8DF 70B0		ldr r7, [pc, #+176] ; 0x5BA0B4
+005BB338  6838     		ldr r0, [r7]
+005BB33A  F8DF 7144		ldr r7, [pc, #+324] ; 0x20415B84
+005BB33E  6038     		str r0, [r7]
+
+#260		
+#261				(* OLD_COUNTER_2001 := dCntRT_2001; *)
+#262				MOVE		dCntRT_2001,OLD_COUNTER_2001	{LNXT:110|111|-1}
+(*) REAL
+005BB340  F8DF 70BC		ldr r7, [pc, #+188] ; 0x204155F8
+005BB344  6838     		ldr r0, [r7]
+005BB346  F8DF 713C		ldr r7, [pc, #+316] ; 0x20415B88
+005BB34A  6038     		str r0, [r7]
+
+#263		
+#264				(* SampleTime_2001 := (SysDateGetNs() / 1000000); *)
+#265				SysDateGetNs	{LNXT:111|113|-1}
+(*) REAL
+005BB34C  F8DF 4074		ldr r4, [pc, #+116] ; 0x4A2105
+005BB350  F044 0401		orr r4, r4, #1
+005BB354  47A0     		blx r4
+
+#266				DIV		1000000	{LNXT:111|113|-1}
+(*) ULINT
+005BB356  F8DF 7068		ldr r7, [pc, #+104] ; 0xF4240
+005BB35A  463F     		mov r7, r7
+005BB35C  46B9     		mov r9, r7
+005BB35E  F04F 0A00		mov r10, #0
+005BB362  464A     		mov r2, r9
+005BB364  4653     		mov r3, r10
+005BB366  F8DF 4060		ldr r4, [pc, #+96] ; 0x4B933D
+005BB36A  F044 0401		orr r4, r4, #1
+005BB36E  47A0     		blx r4
+
+#267				ST		SampleTime_2001	{LNXT:111|113|-1}
+(*) ULINT
+005BB370  F8DF 7108		ldr r7, [pc, #+264] ; 0x20415B7C
+005BB374  E92D 0180		stmdb sp!, { r7, r8 }
+005BB378  463F     		mov r7, r7
+005BB37A  C703     		stm _TMP!, {_PAR0, _PAR1}
+005BB37C  E8BD 0180		ldmia sp!, { r7, r8 }
+
+#268		
+#269		$label3:
+#270			(* END_IF *)
+#271		
+#272		
+#273			(* IF RUN_STATE_bool_2001 *)
+#274			LD		RUN_STATE_bool_2001	{LNXT:113|-1|-1}
+(*) UNDEF
+005BB380  F8DF 70F0		ldr r7, [pc, #+240] ; 0x20415B7A
+005BB384  7838     		ldrb r0, [r7]
+
+#275			JMPCN	$label7	{LNXT:113|113|113}
+(-) BOOL
+005BB386  2800     		cmp r0, #0
+005BB388  D006     		beq #12 ; 0x005BB398
+
+
+#276		
+#277			(* THEN *)
+#278		
+#279				(* dMachineState_2001 := 1; *)
+#280				MOVE		1,dMachineState_2001	{LNXT:113|114|-1}
+(*) BOOL
+005BB38C  2001     		mov r0, #1 ; 1
+005BB38E  F8DF 7078		ldr r7, [pc, #+120] ; 0x20415600
+005BB392  8038     		strh r0, [r7]
+
+#281				JMP		$label8	{LNXT:113|113|113}
+(-) UINT
+005BB394  E00A     		b #20 ; 0x005BB3AC
+
+
+#282		$label7:
+#283		
+#284			(* ELSE *)
+#285		
+#286				(* dMachineState_2001 := 0; *)
+#287				MOVE		0,dMachineState_2001	{LNXT:113|113|-1}
+(*) UINT
+005BB398  2000     		mov r0, #0 ; 0
+005BB39A  F8DF 706C		ldr r7, [pc, #+108] ; 0x20415600
+005BB39E  8038     		strh r0, [r7]
+
+#288		
+#289				(* dMacRatePpm_2001 := 0.0; *)
+#290				MOVE		0.0,dMacRatePpm_2001	{LNXT:113|114|-1}
+(*) UINT
+005BB3A0  F8DF 7044		ldr r7, [pc, #+68] ; 0x5BA0B4
+005BB3A4  6838     		ldr r0, [r7]
+005BB3A6  F8DF 70D8		ldr r7, [pc, #+216] ; 0x20415B84
+005BB3AA  6038     		str r0, [r7]
+
+#291		
+#292		$label8:
+#293			(* END_IF *)
+#294		
+#295			(* bCntReset_2001        := FALSE; *)
+#296			MOVE		FALSE,bCntReset_2001	{LNXT:114|115|-1}
+(*) REAL
+005BB3AC  2000     		mov r0, #0 ; 0
+005BB3AE  F8DF 705C		ldr r7, [pc, #+92] ; 0x204159F1
+005BB3B2  7038     		strb r0, [r7]
+
+#297		
+#298			(* bPreSetCnt_2001       := FALSE; *)
+#299			MOVE		FALSE,bPreSetCnt_2001	{LNXT:115|10|-1}
+(*) BOOL
+005BB3B4  2000     		mov r0, #0 ; 0
+005BB3B6  F8DF 7058		ldr r7, [pc, #+88] ; 0x204159F2
+005BB3BA  7038     		strb r0, [r7]
+
+005BB3BC  E08E     		b #284
+
+005BB3C0  000F4240		; 0x000F4240
+005BB3C4  004A2105		; 0x004A2105
+005BB3C8  004B933D		; 0x004B933D
+005BB3CC  004B946D		; 0x004B946D
+005BB3D0  004B94F9		; 0x004B94F9
+005BB3D4  004B950B		; 0x004B950B
+005BB3D8  004B9595		; 0x004B9595
+005BB3DC  004BA059		; 0x004BA059
+005BB3E0  005BA0A4		; 0x005BA0A4
+005BB3E4  005BA0B2		; 0x005BA0B2
+005BB3E8  005BA0B4		; 0x005BA0B4
+005BB3EC  005BA0B8		; 0x005BA0B8
+005BB3F0  005BA0BC		; 0x005BA0BC
+005BB3F4  005BA148		; 0x005BA148
+005BB3F8  005BA334		; 0x005BA334
+005BB3FC  005BA638		; 0x005BA638
+005BB400  204155F8		; 0x204155F8
+005BB404  204155FC		; 0x204155FC
+005BB408  20415600		; 0x20415600
+005BB40C  204159F1		; 0x204159F1
+005BB410  204159F2		; 0x204159F2
+005BB414  204159F3		; 0x204159F3
+005BB418  204159F4		; 0x204159F4
+005BB41C  20415AC4		; 0x20415AC4
+005BB420  20415AC6		; 0x20415AC6
+005BB424  20415AC8		; 0x20415AC8
+005BB428  20415ACA		; 0x20415ACA
+005BB42C  20415ACC		; 0x20415ACC
+005BB430  20415ACE		; 0x20415ACE
+005BB434  20415AD0		; 0x20415AD0
+005BB438  20415AD2		; 0x20415AD2
+005BB43C  20415AD4		; 0x20415AD4
+005BB440  20415AD8		; 0x20415AD8
+005BB444  20415ADC		; 0x20415ADC
+005BB448  20415AE0		; 0x20415AE0
+005BB44C  20415AE4		; 0x20415AE4
+005BB450  20415AE5		; 0x20415AE5
+005BB454  20415AE8		; 0x20415AE8
+005BB458  20415AF0		; 0x20415AF0
+005BB45C  20415AF4		; 0x20415AF4
+005BB460  20415AF5		; 0x20415AF5
+005BB464  20415B16		; 0x20415B16
+005BB468  20415B37		; 0x20415B37
+005BB46C  20415B58		; 0x20415B58
+005BB470  20415B79		; 0x20415B79
+005BB474  20415B7A		; 0x20415B7A
+005BB478  20415B7B		; 0x20415B7B
+005BB47C  20415B7C		; 0x20415B7C
+005BB480  20415B84		; 0x20415B84
+005BB484  20415B88		; 0x20415B88
+005BB488  20415B8C		; 0x20415B8C
+005BB48C  20415B8D		; 0x20415B8D
+005BB490  20415B8E		; 0x20415B8E
+005BB494  20415B8F		; 0x20415B8F
+005BB498  20415B90		; 0x20415B90
+005BB49C  20415B91		; 0x20415B91
+005BB4A0  20415B92		; 0x20415B92
+005BB4A4  20415B93		; 0x20415B93
+005BB4A8  20415B94		; 0x20415B94
+005BB4AC  20415B98		; 0x20415B98
+005BB4B0  20415B99		; 0x20415B99
+005BB4B4  20415B9A		; 0x20415B9A
+005BB4B8  20415B9C		; 0x20415B9C
+005BB4BC  20415B9D		; 0x20415B9D
+005BB4C0  20415B9E		; 0x20415B9E
+005BB4C4  20415BA0		; 0x20415BA0
+005BB4C8  20415BA1		; 0x20415BA1
+005BB4CC  20415BA4		; 0x20415BA4
+005BB4D0  20419A81		; 0x20419A81
+005BB4D4  2041AFC0		; 0x2041AFC0
+005BB4D8  2041AFC1		; 0x2041AFC1
+
+END_PROGRAM
+**************************************************
+	List program: ModBusProgram
+**************************************************
+
+PROGRAM ModBusProgram
+
+        VAR
+i : USINT;	{ DE:"Auxiliary variable" }
+Ptr : @BOOL;	{ DE:"Auxiliary pointer" }
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:ModBusProgram}
+#1		(*$WAITSWITCH$*)
+#2		
+#3			(* DiM00Low := dMachineState_2001; *)
+#4			MOVE		dMachineState_2001,DiM00Low	{LNXT:9|10|-1}
+(*) UDINT
+005BB4DC  F8DF 706C		ldr r7, [pc, #+108] ; 0x20415600
+005BB4E0  8838     		ldrh r0, [r7]
+005BB4E2  F8DF 7070		ldr r7, [pc, #+112] ; 0x20419DC4
+005BB4E6  8038     		strh r0, [r7]
+
+#5		
+#6			(* DiM00High := TO_WORD(dCntRT_2001); *)
+#7			LDP0		dCntRT_2001	{LNXT:10|12|-1}
+(-) UINT
+#8			TO_WORD	{LNXT:10|12|-1}
+(*) UINT
+005BB4E8  F8DF 705C		ldr r7, [pc, #+92] ; 0x204155F8
+005BB4EC  6838     		ldr r0, [r7]
+005BB4EE  F8DF 4054		ldr r4, [pc, #+84] ; 0x4B9489
+005BB4F2  F044 0401		orr r4, r4, #1
+005BB4F6  47A0     		blx r4
+
+#9			ST		DiM00High	{LNXT:10|12|-1}
+(*) WORD
+005BB4F8  F8DF 705C		ldr r7, [pc, #+92] ; 0x20419DC6
+005BB4FC  8038     		strh r0, [r7]
+
+#10		
+#11		
+#12			(* IF DiM01Low = 1 *)
+#13			LD		DiM01Low	{LNXT:12|-1|-1}
+(*) UNDEF
+005BB4FE  F8DF 705C		ldr r7, [pc, #+92] ; 0x20419DC8
+005BB502  8838     		ldrh r0, [r7]
+
+#14			EQ		1	{LNXT:12|-1|-1}
+(*) WORD
+005BB504  2801     		cmp r0, #1
+005BB506  BF18 2000		nemov r0, #0
+005BB50A  BF08 2001		eqmov r0, #1
+
+#15			JMPCN	$label0	{LNXT:12|13|9}
+(-) BOOL
+005BB50E  2800     		cmp r0, #0
+005BB510  D00F     		beq #30 ; 0x005BB532
+
+
+#16		
+#17			(* THEN *)
+#18		
+#19				(* dCntRT_2001 := TO_REAL(DiM01High); *)
+#20				LDP0		DiM01High	{LNXT:13|14|-1}
+(-) BOOL
+#21				TO_REAL	{LNXT:13|14|-1}
+(*) BOOL
+005BB514  F8DF 7048		ldr r7, [pc, #+72] ; 0x20419DCA
+005BB518  8838     		ldrh r0, [r7]
+005BB51A  F8DF 4024		ldr r4, [pc, #+36] ; 0x4B946D
+005BB51E  F044 0401		orr r4, r4, #1
+005BB522  47A0     		blx r4
+
+#22				ST		dCntRT_2001	{LNXT:13|14|-1}
+(*) REAL
+005BB524  F8DF 7020		ldr r7, [pc, #+32] ; 0x204155F8
+005BB528  6038     		str r0, [r7]
+
+#23		
+#24				(* bPreSetCnt_2001 := TRUE; *)
+#25				MOVE		TRUE,bPreSetCnt_2001	{LNXT:14|9|-1}
+(*) REAL
+005BB52A  2001     		mov r0, #1 ; 1
+005BB52C  F8DF 7020		ldr r7, [pc, #+32] ; 0x204159F2
+005BB530  7038     		strb r0, [r7]
+
+005BB532  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BB536  F8DD E000		ldr lr, [sp]
+005BB53A  B002     		add sp, sp, #8
+
+005BB53C  4770     		bx lr
+
+005BB540  004B946D		; 0x004B946D
+005BB544  004B9489		; 0x004B9489
+005BB548  204155F8		; 0x204155F8
+005BB54C  20415600		; 0x20415600
+005BB550  204159F2		; 0x204159F2
+005BB554  20419DC4		; 0x20419DC4
+005BB558  20419DC6		; 0x20419DC6
+005BB55C  20419DC8		; 0x20419DC8
+005BB560  20419DCA		; 0x20419DCA
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+005BB564  4770     		bx lr
+
+
+*** OUTPUT:
+005BB566  4770     		bx lr
+
+
+
+**************************************************
+	Task Slow init code
+**************************************************
+
+005BB568  B082     		sub sp, sp, #8
+005BB56A  F8CD E000		str lr, [sp]
+005BB56E  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+005BB572  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BB576  F8DD E000		ldr lr, [sp]
+005BB57A  B002     		add sp, sp, #8
+
+005BB57C  4770     		bx lr
+
+
+
+**************************************************
+	Global init code
+**************************************************
+
+005BB590  B082     		sub sp, sp, #8
+005BB592  F8CD E000		str lr, [sp]
+005BB596  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+Var init: V::MF_Machine_2001.IN_FILTER_RUN_STATE_ON_mSec = 10
+005BB59A  F8DF 0068		ldr r0, [pc, #+104] ; 0xA
+005BB59E  F8DF 7070		ldr r7, [pc, #+112] ; 0x20415AC6
+005BB5A2  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_FILTER_RUN_STATE_OFF_mSec = 10
+005BB5A4  F8DF 005C		ldr r0, [pc, #+92] ; 0xA
+005BB5A8  F8DF 7068		ldr r7, [pc, #+104] ; 0x20415AC8
+005BB5AC  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_FILTER_CNT_A_ON_mSec = 10
+005BB5AE  F8DF 0054		ldr r0, [pc, #+84] ; 0xA
+005BB5B2  F8DF 7064		ldr r7, [pc, #+100] ; 0x20415ACA
+005BB5B6  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_FILTER_CNT_A_OFF_mSec = 10
+005BB5B8  F8DF 0048		ldr r0, [pc, #+72] ; 0xA
+005BB5BC  F8DF 705C		ldr r7, [pc, #+92] ; 0x20415ACC
+005BB5C0  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_FILTER_CNT_B_ON_mSec = 10
+005BB5C2  F8DF 0040		ldr r0, [pc, #+64] ; 0xA
+005BB5C6  F8DF 7058		ldr r7, [pc, #+88] ; 0x20415ACE
+005BB5CA  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_FILTER_CNT_B_OFF_mSec = 10
+005BB5CC  F8DF 0034		ldr r0, [pc, #+52] ; 0xA
+005BB5D0  F8DF 7050		ldr r7, [pc, #+80] ; 0x20415AD0
+005BB5D4  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_WARNING_DELAY_Sec = 180
+005BB5D6  F8DF 0030		ldr r0, [pc, #+48] ; 0xB4
+005BB5DA  F8DF 704C		ldr r7, [pc, #+76] ; 0x20415AD2
+005BB5DE  8038     		strh r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_CNT_A_STEP_UP = 1.0
+005BB5E0  F8DF 7028		ldr r7, [pc, #+40] ; 0x5BA0C0
+005BB5E4  6838     		ldr r0, [r7]
+
+005BB5E6  F8DF 7044		ldr r7, [pc, #+68] ; 0x20415ADC
+005BB5EA  6038     		str r0, [r7]
+
+Var init: V::MF_Machine_2001.IN_CNT_B_STEP_UP = 1.0
+005BB5EC  F8DF 701C		ldr r7, [pc, #+28] ; 0x5BA0C0
+005BB5F0  6838     		ldr r0, [r7]
+
+005BB5F2  F8DF 703C		ldr r7, [pc, #+60] ; 0x20415AE0
+005BB5F6  6038     		str r0, [r7]
+
+005BB5F8  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BB5FC  F8DD E000		ldr lr, [sp]
+005BB600  B002     		add sp, sp, #8
+
+005BB602  4770     		bx lr
+
+005BB604  0000000A		; 0x0000000A
+005BB608  000000B4		; 0x000000B4
+005BB60C  005BA0C0		; 0x005BA0C0
+005BB610  20415AC6		; 0x20415AC6
+005BB614  20415AC8		; 0x20415AC8
+005BB618  20415ACA		; 0x20415ACA
+005BB61C  20415ACC		; 0x20415ACC
+005BB620  20415ACE		; 0x20415ACE
+005BB624  20415AD0		; 0x20415AD0
+005BB628  20415AD2		; 0x20415AD2
+005BB62C  20415ADC		; 0x20415ADC
+005BB630  20415AE0		; 0x20415AE0
+
+
+
+**************************************************
+	Task $$VirtualTables init code
+**************************************************
+
+005BB634  B082     		sub sp, sp, #8
+005BB636  F8CD E000		str lr, [sp]
+005BB63A  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+
+005BB63E  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+005BB642  F8DD E000		ldr lr, [sp]
+005BB646  B002     		add sp, sp, #8
+
+005BB648  4770     		bx lr
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Code area type:          		       main code
+Start code area:          		00000000005BA000h
+End code area:            		00000000005BB650h
+Code size:                		00001650h
+
+Start local data area:    		00000000204159E4h
+End local data area:      		0000000020415BC4h
+Local data size:          		000001E0h
+
+Start retentive data area:		00000000204155F8h
+End retentive data area:  		0000000020415602h
+Retentive data size:      		0000000Ah
+
+Start bit data area:      		0000000000000000h
+End bit data area:        		0000000000000000h
+Bit data size:            		00000000h
+
+
+
+********************************************
+CODE ID:                                3654582C
+DEBUG MEMO ID:                          0000A468
+FULL MEMO ID:                           000042DC
+********************************************

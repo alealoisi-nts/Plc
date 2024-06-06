@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<unuObjects fileVersion="1.0" sourceCodeID="1954276182">
+	<unuGlobalVars/>
+	<unuLocalVars>
+		<program name="MasterProgram" sid="P:MAIN:MasterProgram">
+			<uvar name="IBit" type="BOOL" addr="Auto" sid="V::MasterProgram.IBit" descr="Input bits"/>
+		</program>
+		<program name="MqttProgram" sid="P:MAIN:MqttProgram">
+			<uvar name="Json_Eq" type="STRING" addr="Auto" sid="V::MqttProgram.Json_Eq" descr=""/>
+		</program>
+	</unuLocalVars>
+	<unuPrograms/>
+	<unuFunctionBlocks>
+		<functionBlock name="_SplitLDT" sid="FB:eLLabCommonLib:_SplitLDT"/>
+		<functionBlock name="HTTPServer_v2" sid="FB:eLLabHTTPLib:HTTPServer_v2"/>
+		<functionBlock name="CTUD" sid="FB:eLLabStdLib:CTUD"/>
+		<functionBlock name="HTTPClient_v4" sid="FB:eLLabHTTPLib:HTTPClient_v4"/>
+		<functionBlock name="PWMOut_v1" sid="FB:eLLabUtyLib:PWMOut_v1"/>
+		<functionBlock name="RESTClient_v6" sid="FB:eLLabHTTPLib:RESTClient_v6"/>
+		<functionBlock name="SNTPRequest" sid="FB:eLLabNetworkLib:SNTPRequest"/>
+		<functionBlock name="StepRelay" sid="FB:eLLabUtyLib:StepRelay"/>
+		<functionBlock name="WordToDouble" sid="FB:eLLabUtyLib:WordToDouble"/>
+		<functionBlock name="DNSRequest" sid="FB:eLLabNetworkLib:DNSRequest"/>
+		<functionBlock name="EMailSend_v1" sid="FB:eLLabNetworkLib:EMailSend_v1"/>
+		<functionBlock name="FTPClient_v3" sid="FB:eLLabNetworkLib:FTPClient_v3"/>
+		<functionBlock name="LRamp" sid="FB:eLLabUtyLib:LRamp"/>
+		<functionBlock name="CTD" sid="FB:eLLabStdLib:CTD"/>
+		<functionBlock name="CTU" sid="FB:eLLabStdLib:CTU"/>
+		<functionBlock name="HMIAInOnePicoface" sid="FB:eLLabUtyLib:HMIAInOnePicoface"/>
+		<functionBlock name="eTOF" sid="FB:eLLabStdLib:eTOF"/>
+		<functionBlock name="eTP" sid="FB:eLLabStdLib:eTP"/>
+		<functionBlock name="RS" sid="FB:eLLabStdLib:RS"/>
+		<functionBlock name="SR" sid="FB:eLLabStdLib:SR"/>
+		<functionBlock name="DewPointCalculator" sid="FB:eLLabUtyLib:DewPointCalculator"/>
+		<functionBlock name="F_TRIG" sid="FB:eLLabStdLib:F_TRIG"/>
+		<functionBlock name="HIDClkDtaReader" sid="FB:eLLabUtyLib:HIDClkDtaReader"/>
+		<functionBlock name="WordToByte" sid="FB:eLLabUtyLib:WordToByte"/>
+		<functionBlock name="DoubleToWord" sid="FB:eLLabUtyLib:DoubleToWord"/>
+		<functionBlock name="BLINK" sid="FB:eLLabUtyLib:BLINK"/>
+		<functionBlock name="BlinkValue" sid="FB:eLLabUtyLib:BlinkValue"/>
+		<functionBlock name="IOEncoder" sid="FB:eLLabUtyLib:IOEncoder"/>
+		<functionBlock name="Average" sid="FB:eLLabUtyLib:Average"/>
+		<functionBlock name="PIDMng_v2" sid="FB:eLLabUtyLib:PIDMng_v2"/>
+		<functionBlock name="CLIClient" sid="FB:eLLabUtyLib:CLIClient"/>
+		<functionBlock name="WiegandDcd" sid="FB:eLLabUtyLib:WiegandDcd"/>
+		<functionBlock name="FSFileCopy" sid="FB:eLLabUtyLib:FSFileCopy"/>
+		<functionBlock name="HMIAInOneNetlog" sid="FB:eLLabUtyLib:HMIAInOneNetlog"/>
+		<functionBlock name="Debouncing" sid="FB:eLLabUtyLib:Debouncing"/>
+		<functionBlock name="OnOffCycle_v1" sid="FB:eLLabUtyLib:OnOffCycle_v1"/>
+		<functionBlock name="StrainGaugeAcq" sid="FB:eLLabUtyLib:StrainGaugeAcq"/>
+		<functionBlock name="DataTransfer" sid="FB:eLLabUtyLib:DataTransfer"/>
+		<functionBlock name="IODataExchange" sid="FB:eLLabUtyLib:IODataExchange"/>
+		<functionBlock name="DataStreamExch_v1" sid="FB:eLLabUtyLib:DataStreamExch_v1"/>
+	</unuFunctionBlocks>
+	<unuFunctions>
+		<function name="eGetLREAL" sid="F:eLLabCommonLib:eGetLREAL"/>
+		<function name="eGetWORD" sid="F:eLLabCommonLib:eGetWORD"/>
+		<function name="VBitSet" sid="F:eLLabUtyLib:VBitSet"/>
+		<function name="eGetLWORD" sid="F:eLLabCommonLib:eGetLWORD"/>
+		<function name="eSetDWORD" sid="F:eLLabCommonLib:eSetDWORD"/>
+		<function name="DateTimeFormat" sid="F:eLLabCommonLib:DateTimeFormat"/>
+		<function name="FStringToArray" sid="F:eLLabCommonLib:FStringToArray"/>
+		<function name="VBitTest" sid="F:eLLabUtyLib:VBitTest"/>
+		<function name="eGetREAL" sid="F:eLLabCommonLib:eGetREAL"/>
+		<function name="SwapData" sid="F:eLLabCommonLib:SwapData"/>
+		<function name="eSetWORD" sid="F:eLLabCommonLib:eSetWORD"/>
+		<function name="MemCompare" sid="F:eLLabCommonLib:MemCompare"/>
+		<function name="DayOfYearGet" sid="F:eLLabCommonLib:DayOfYearGet"/>
+		<function name="eCONCAT" sid="F:eLLabStdLib:eCONCAT"/>
+		<function name="eSetLREAL" sid="F:eLLabCommonLib:eSetLREAL"/>
+		<function name="Linearize" sid="F:eLLabUtyLib:Linearize"/>
+		<function name="eSetLWORD" sid="F:eLLabCommonLib:eSetLWORD"/>
+		<function name="eSetREAL" sid="F:eLLabCommonLib:eSetREAL"/>
+		<function name="ArrayToFString" sid="F:eLLabCommonLib:ArrayToFString"/>
+		<function name="IsLeapYear" sid="F:eLLabCommonLib:IsLeapYear"/>
+		<function name="eDELETE" sid="F:eLLabStdLib:eDELETE"/>
+		<function name="ValueScale" sid="F:eLLabUtyLib:ValueScale"/>
+	</unuFunctions>
+	<pouMap>
+		<obj name="Back" sid="T::Back" type="task">
+			<dep name="MqttProgram" sid="P:MAIN:MqttProgram"/>
+		</obj>
+		<obj name="Boot" sid="T::Boot" type="task">
+			<dep name="$$ElsistInit" sid="P:ElsistInit:$$ElsistInit"/>
+		</obj>
+		<obj name="Slow" sid="T::Slow" type="task">
+			<dep name="MasterProgram" sid="P:MAIN:MasterProgram"/>
+		</obj>
+		<obj name="_$$DUMMY_POU_OBJECT$$_" sid="P::_$$DUMMY_POU_OBJECT$$_" type="program"/>
+		<obj name="MasterProgram" sid="P:MAIN:MasterProgram" type="program">
+			<dep name="R_TRIG" sid="FB:eLLabStdLib:R_TRIG"/>
+			<dep name="eTON" sid="FB:eLLabStdLib:eTON"/>
+			<dep name="FB_MacManager" sid="FB:MAIN:FB_MacManager"/>
+			<dep name="ByteToWord" sid="FB:eLLabUtyLib:ByteToWord"/>
+			<dep name="BitToByte" sid="FB:eLLabUtyLib:BitToByte"/>
+		</obj>
+		<obj name="FB_MacManager" sid="FB:MAIN:FB_MacManager" type="functionBlock">
+			<dep name="R_TRIG" sid="FB:eLLabStdLib:R_TRIG"/>
+			<dep name="eTON" sid="FB:eLLabStdLib:eTON"/>
+			<dep name="ByteToBit" sid="FB:eLLabUtyLib:ByteToBit"/>
+		</obj>
+		<obj name="MQTTClient_v1" sid="FB:eLLabNetworkLib:MQTTClient_v1" type="functionBlock">
+			<dep name="eGetBYTE" sid="F:eLLabCommonLib:eGetBYTE"/>
+			<dep name="eSetBYTE" sid="F:eLLabCommonLib:eSetBYTE"/>
+			<dep name="ArrayVarTxfer" sid="F:eLLabCommonLib:ArrayVarTxfer"/>
+		</obj>
+		<obj name="MqttProgram" sid="P:MAIN:MqttProgram" type="program">
+			<dep name="JSONEncode_v1" sid="FB:eLLabHTTPLib:JSONEncode_v1"/>
+			<dep name="JSONDecode_v2" sid="FB:eLLabHTTPLib:JSONDecode_v2"/>
+			<dep name="MQTTClient_v1" sid="FB:eLLabNetworkLib:MQTTClient_v1"/>
+		</obj>
+		<obj name="$$ElsistInit" sid="P:ElsistInit:$$ElsistInit" type="program">
+			<dep name="XUnifiedLibInit" sid="F:eLLabXUnified12Lib:XUnifiedLibInit"/>
+		</obj>
+		<obj name="JSONDecode_v2" sid="FB:eLLabHTTPLib:JSONDecode_v2" type="functionBlock">
+			<dep name="eGetDWORD" sid="F:eLLabCommonLib:eGetDWORD"/>
+			<dep name="eSetBYTE" sid="F:eLLabCommonLib:eSetBYTE"/>
+			<dep name="eToPVoid" sid="F:eLLabCommonLib:eToPVoid"/>
+			<dep name="eGetBYTE" sid="F:eLLabCommonLib:eGetBYTE"/>
+		</obj>
+		<obj name="JSONEncode_v1" sid="FB:eLLabHTTPLib:JSONEncode_v1" type="functionBlock">
+			<dep name="eGetDWORD" sid="F:eLLabCommonLib:eGetDWORD"/>
+			<dep name="eGetBYTE" sid="F:eLLabCommonLib:eGetBYTE"/>
+			<dep name="eSetBYTE" sid="F:eLLabCommonLib:eSetBYTE"/>
+		</obj>
+		<obj name="eTON" sid="FB:eLLabStdLib:eTON" type="functionBlock"/>
+		<obj name="ByteToWord" sid="FB:eLLabUtyLib:ByteToWord" type="functionBlock"/>
+		<obj name="R_TRIG" sid="FB:eLLabStdLib:R_TRIG" type="functionBlock"/>
+		<obj name="ByteToBit" sid="FB:eLLabUtyLib:ByteToBit" type="functionBlock"/>
+		<obj name="BitToByte" sid="FB:eLLabUtyLib:BitToByte" type="functionBlock"/>
+		<obj name="XUnifiedLibInit" sid="F:eLLabXUnified12Lib:XUnifiedLibInit" type="function">
+			<dep name="eSetBYTE" sid="F:eLLabCommonLib:eSetBYTE"/>
+			<dep name="eGetBYTE" sid="F:eLLabCommonLib:eGetBYTE"/>
+		</obj>
+		<obj name="eGetDWORD" sid="F:eLLabCommonLib:eGetDWORD" type="function"/>
+		<obj name="eGetBYTE" sid="F:eLLabCommonLib:eGetBYTE" type="function"/>
+		<obj name="eSetBYTE" sid="F:eLLabCommonLib:eSetBYTE" type="function"/>
+		<obj name="ArrayVarTxfer" sid="F:eLLabCommonLib:ArrayVarTxfer" type="function">
+			<dep name="eToPVoid" sid="F:eLLabCommonLib:eToPVoid"/>
+		</obj>
+		<obj name="eToPVoid" sid="F:eLLabCommonLib:eToPVoid" type="function"/>
+	</pouMap>
+</unuObjects>
