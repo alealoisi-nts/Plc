@@ -577,7 +577,7 @@ END_VAR
 				</functionBlock>
 			</functionBlocks>
 			<programs>
-				<program name="MasterProgram" version="1.0.0" creationDate="0" lastModifiedDate="1717688734" excludeFromBuild="FALSE" excludeFromBuildIfNotDef="">
+				<program name="MasterProgram" version="1.0.0" creationDate="0" lastModifiedDate="1717689191" excludeFromBuild="FALSE" excludeFromBuildIfNotDef="">
 					<vars>
 						<localVars>
 							<var name="mac_word" type="WORD"/>
@@ -641,7 +641,7 @@ END_VAR
 		bPreSetCnt_2001:= TRUE;
 		bSetup_2001 := FALSE;
 		//sIdMachine_2001 := '2001';
-		sPartProgram_2001 := 'INITSEQUENCeE';
+		sPartProgram_2001 := 'INITSEQUENCE';
 		sProductionRequest_2001 := '';
 		//sProductionRequest_OLD_2001 := '';
 		sSegmentRequirement_2001 := ''; 
@@ -32058,7 +32058,7 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="ModBus_v2" nextID="33553">
+			<root name="ModBus_v2" nextID="33613">
 				<!-- <Pou name="POUs" id="1"/> -->
 				<folder name="POUs" id="1">
 					<Pou name="ModBusProgram" id="6"/>
